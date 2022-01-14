@@ -1,0 +1,30 @@
+{
+    "name": "vistoria-1.0",
+    "version": "1.0.0",
+
+    "license": "MIT",
+    "scripts": {
+        "dev": "ts-node-dev   --trasrc/server.ts",
+        "typeorm": "ts-node-dev node_modules/typeorm/cli.js"
+    },
+    "dependencies": {
+        "bcryptjs": "^2.4.3",
+        "express": "^4.17.1",
+        "jsonwebtoken": "^8.5.1",
+        "pg": "^8.7.1",
+        "reflect-metadata": "^0.1.13",
+        "ts-node": "^10.4.0",
+        "typeorm": "^0.2.41",
+        "uuid": "^8.3.2"
+    },
+    "devDependencies": {
+        "@types/bcryptjs": "^2.4.2",
+        "@types/express": "^4.17.13",
+        "@types/jsonwebtoken": "^8.5.6",
+        "@types/uuid": "^8.3.3",
+        "nodemon": "^2.0.15",
+        "ts-node-dev": "^1.1.8",
+        "typescript": "^4.5.4"
+    },
+    "description": "programa desenvovido para vistoria"
+}
