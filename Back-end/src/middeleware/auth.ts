@@ -1,7 +1,7 @@
 import { Request,Response,NextFunction } from "express";
 import jwt = require("jsonwebtoken");
  
-import authConfig from './Config/authConfig.json';
+import authConfig from '../Config/authConfig.json';
 
 
 export class auth{
@@ -15,8 +15,8 @@ export class auth{
             const parts = authHeader.split(' ');
 
 
-            //lembra do !parts
-            if( parts.length === 2)
+           
+            if( !(parts.length === 2))
                 return res.status(401).send({error:'token error'});
 
 

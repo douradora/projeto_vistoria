@@ -7,7 +7,7 @@ import { login } from "./entites/user";
 
 const routes =Router();
 
-routes.post('/',authcontroller.handle(req,res));
+routes.post('/',new authcontroller().handle);
 
 export {routes}
 

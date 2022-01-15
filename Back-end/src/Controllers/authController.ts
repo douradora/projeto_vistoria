@@ -1,52 +1,36 @@
-import {compare}from "bcryptjs" ;
-import { Response,Request,NextFunction } from "express";
-import { getRepository } from "typeorm";
-import { login } from "../entites/user";
-
-import {userLoad} from "../services/userLoad";
+import { compare, hash } from "bcryptjs";
+import { Response, Request, NextFunction, json } from "express";
+import { stringify } from "uuid";
+import { userLoad } from "../services/userLoad";
 
 
 
 
-export class authcontroller{
-    
-   
-     async  handle(req:Request,res:Response){
-       
-        const {login,password} =req.body;
-        const usuario = userLoad
-       
+export class authcontroller {
 
 
+    async handle(req: Request, res: Response) {
+        const load = new userLoad();
+        const { login, password } = req.body;
 
+        const usuario = await load.execute(login);
 
-     if(!CpfUser)
-        throw Error("usuario nao existe");
+        if (!usuario) {
+            res.json({ "message": "usuario nao existe" });
+        } else {
 
-
-       
-     
-        const auth=compare(password,Senha);
-         if(auth){
-          
-            return res.json();
-        }else{
-            return new Error("senha incorreta")
+            if (await compare(password, `${usuario.Senha}`)) {
+                res.json(usuario);
+            } else {
+                res.send("senha incorreta");
+            }
 
         }
 
-        
-     
-      
-
-
-        
-
-
-
     }
-
 }
+
+
 
 
 

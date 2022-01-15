@@ -6,12 +6,13 @@ import { login } from "../entites/user";
 
 export  class userLoad{
 
-     async execute(id) {
+     async execute(id:string) {
         const repo = getRepository(login)
-        const login = await repo.findByIds([id])
-
-        return login;
-    
+        
+        const user = await repo.findOne(id)
+     
+        return user;
+        
     }
 
 

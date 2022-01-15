@@ -1,14 +1,15 @@
 {
     "name": "vistoria-1.0",
     "version": "1.0.0",
-
     "license": "MIT",
     "scripts": {
-        "dev": "ts-node-dev   --trasrc/server.ts",
+        "dev": "ts-node-dev  src/server.ts",
         "typeorm": "ts-node-dev node_modules/typeorm/cli.js"
     },
     "dependencies": {
+        "@types/cors": "^2.8.12",
         "bcryptjs": "^2.4.3",
+        "cors": "^2.8.5",
         "express": "^4.17.1",
         "jsonwebtoken": "^8.5.1",
         "pg": "^8.7.1",
