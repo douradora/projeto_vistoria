@@ -1,18 +1,18 @@
 import { Entity,Column,CreateDateColumn,PrimaryColumn } from "typeorm";
 
 
-@Entity("login")
-export class login{
+@Entity("User")
+export class user{
 
     @PrimaryColumn()
-    CpfUser:string;
+    cpf_user:string;
 
     @Column()
-    nome:string;
+    name:string;
     @Column()
-    user: String
+    email: String
     @Column()
-    Senha:String
+    password:String
    
     @CreateDateColumn()
     created_at:Date;

@@ -1,3 +1,6 @@
 /node_modules
 *.log
 *.env
+*.test
+/__tests__
+ormconfig.json

@@ -19,7 +19,7 @@ export class vistoria1642182051736 implements MigrationInterface {
                 length: "10"
             },
             {
-                name: "vistoriadorId",
+                name: "id_user",
                 type: "varchar",
 
                 length: "15",
@@ -30,6 +30,14 @@ export class vistoria1642182051736 implements MigrationInterface {
                 type: "varchar",
                 length: "15",
                 isNullable: false
+            },
+            {
+                name:"Nome_condutor",
+                type: "varchar",
+                length: "50",
+                isNullable:false
+
+
             },
             {
                 name: "situacaoId",
@@ -57,10 +65,10 @@ export class vistoria1642182051736 implements MigrationInterface {
 
                     },
                     {
-                        name: "fk_vistoriador_id",
-                        columnNames: ["vistoriadorId"],
-                        referencedTableName: "vistoriador",
-                        referencedColumnNames: ["idUser"]
+                        name: "fk_user_id",
+                        columnNames: ["id_user"],
+                        referencedTableName: "User_",
+                        referencedColumnNames: ["cpf_user"]
                     },
 
                     {

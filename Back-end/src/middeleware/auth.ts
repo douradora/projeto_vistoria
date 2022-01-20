@@ -1,5 +1,5 @@
 import { Request,Response,NextFunction } from "express";
-import jwt = require("jsonwebtoken");
+import {verify} from "jsonwebtoken";
  
 import authConfig from '../Config/authConfig.json';
 
@@ -28,17 +28,10 @@ export class auth{
                 return res.status(401).send({error: 'badly formatted token'});
         
          
-            jwt.verify(token,authConfig.secret)    
+            verify(token,authConfig.secret)    
             
-                
-                
-
-
-
+        
         }
-
-
-
 
 
 }

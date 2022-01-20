@@ -5,23 +5,23 @@ export class user1642181947033 implements MigrationInterface {
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-            name:"login",
+            name:"User",
             columns:[{
-                name:"CpfUser",
+                name:"cpf_user",
                 type:"varchar",
                 isPrimary:true,
                 length:"15"
 
             },
             {
-                name:"nome",
+                name:"name",
                 type:"varchar",
                 isUnique:false,
                 isNullable:false,
                 length:"50"
                 },
                 {   
-                    name:"user",
+                    name:"email",
                     type:"varchar",
                     isNullable:false,
                     isUnique:true
@@ -30,7 +30,7 @@ export class user1642181947033 implements MigrationInterface {
 
                 },
                 {
-                    name:"Senha",
+                    name:"password",
                     type:"Varchar",
                     isNullable:false,
                     
@@ -52,7 +52,7 @@ export class user1642181947033 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable("login")
+        await queryRunner.dropTable("User")
     }
 
 }

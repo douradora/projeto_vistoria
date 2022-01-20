@@ -1,11 +1,6 @@
-import "reflect-metadata";
-import express from "express";
-import cors from 'cors'
-import "./database";
-import { routes } from "./routes";
+import { app } from "./app";
 
-const app =express();
-app.use(cors())
-app.use(express.json());
-app.use(routes);
-app.listen(3000,()=>console.log("server is running"));
+const PORT =process.env.SERVER_PORT;
+
+
+app.listen(PORT,()=>console.log(`server os runnig on Port ${PORT}`))
