@@ -7,11 +7,11 @@ import { IUSerRequest } from "../interfaces/Iuser";
 
 export class LoginService {
 
-    async execute({ cpf_user, password }: IUSerRequest) {
+    async execute({ cpf, password }) {
 
         const repo = getRepository(user)
 
-        const User = await repo.findOne(cpf_user);
+        const User = await repo.findOne(cpf);
 
 
         if (!User)
@@ -19,13 +19,11 @@ export class LoginService {
 
         const result = await compare(password, `${User.password}`)
         
-        if (result) {
-            return user;
-        } else {
+        if (!result) 
             throw new Error("usuario ou senha incorretos");
-
-        }
-
+       
+    
+        return User;
     }
 
 }

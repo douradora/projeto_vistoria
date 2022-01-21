@@ -14,10 +14,17 @@ export class CreateUserService {
 
         const repo = getRepository(user);
 
-        if (await repo.findOne(cpf_user))
-            throw new Error("cpf ja cadastrado");
-        if (await repo.findOne(email))
-            throw new Error("email esta em uso por outro usuario");
+        if (await repo.findOne(cpf_user)){
+            throw new Error("cpf ja cadastrado")
+        }
+        const findEmail= await repo.find({where:{email:email}})
+        
+        //forma que encotrei de checar o email
+        
+        
+        if (findEmail[0] !== (null||undefined)){
+            console.log(findEmail[0])
+            throw new Error("email esta em uso por outro usuario")}
 
         const PW = await hash(password, 10);
 

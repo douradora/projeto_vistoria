@@ -10,9 +10,9 @@ export class user{
     @Column()
     name:string;
     @Column()
-    email: String
+    email: string
     @Column()
-    password:String
+    password:string
    
     @CreateDateColumn()
     created_at:Date;
