@@ -1,0 +1,92 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:../src/__tests__/database/data.sqlite"
+}
+
+model Destino {
+  id         String              @id @default(uuid())
+  Descricao  String              @unique
+  created_at DateTime            @default(dbgenerated("now()"))
+  vistoria   vistoria[]          
+}
+
+model Locadora {
+  idLocadora   String              @id @default(uuid())
+  NomeLocadora String              @unique
+  created_at   DateTime            @default(dbgenerated("now()"))
+  Veiculo      Veiculo[]
+}
+
+model ModeloVeiculo {
+  idModelo   String              @id @default(uuid())
+  montadora  String              @unique
+  modelo     String
+  created_at DateTime            @default(dbgenerated("now()"))
+  Veiculo    Veiculo[]
+}
+
+model Opm {
+  idOpm      String              @id @default(uuid())
+  NomeOpm    String              @unique
+  ComandoOpm String
+  created_at DateTime            @default(dbgenerated("now()"))
+  Veiculo    Veiculo[]
+}
+
+model Situacao {
+  id         String              @id @default(uuid())
+  Descricao  String              @unique
+  created_at DateTime            @default(dbgenerated("now()"))
+  vistoria   vistoria[]          
+}
+
+model User {
+  cpf_user   String   @id
+  name       String
+  email      String   @unique
+  password   String
+  created_at DateTime @default(dbgenerated("now()"))
+}
+
+model Veiculo {
+  Placa         String              @id
+  Prefixo       String              @unique
+  quilometragem Int
+  combustivel   Float               @default(dbgenerated("1/4"))
+  ModeloId      String           
+  OPMID         String           
+  LocadoraId    String           
+  created_at    DateTime            @default(dbgenerated("now()"))
+  Locadora      Locadora            @relation(fields: [LocadoraId], references: [idLocadora], onDelete: Cascade, onUpdate: Cascade)
+  ModeloVeiculo ModeloVeiculo       @relation(fields: [ModeloId], references: [idModelo], onDelete: Cascade, onUpdate: Cascade)
+  Opm           Opm                 @relation(fields: [OPMID], references: [idOpm], onDelete: Cascade, onUpdate: Cascade)
+  vistoria      vistoria[]          
+}
+
+
+model funcao {
+  id_funcao   Int            @id @default(autoincrement())
+  nome_funcao String
+
+
+}
+
+model vistoria {
+  idVistoria    Int                 @id @default(autoincrement())
+  VeiculoPlaca  String
+  id_user       String
+  CondutorCpf   String
+  Nome_condutor String
+  situacaoId    String           
+  destinoId     String           
+  created_at    DateTime            @default(dbgenerated("now()"))
+  Veiculo       Veiculo             @relation(fields: [VeiculoPlaca], references: [Placa], onDelete: Cascade, onUpdate: Cascade)
+  Destino       Destino             @relation(fields: [destinoId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  Situacao      Situacao            @relation(fields: [situacaoId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+ 
+}
