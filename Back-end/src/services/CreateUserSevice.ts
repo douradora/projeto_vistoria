@@ -1,7 +1,7 @@
-import { getRepository } from "typeorm";
-import { user } from "../entites/user"
+import { Client } from "../Prisma/prismaClient";
 import { hash } from "bcryptjs";
 import  {IUSerRequest} from '../interfaces/Iuser';
+
 
 
 
@@ -12,25 +12,27 @@ export class CreateUserService {
         if(!cpf_user||!email||!name||!password)
             throw new Error('Todos os campos devem ser preechidos');
 
-        const repo = getRepository(user);
-
-        if (await repo.findOne(cpf_user))
+        const findCpfExists = await Client.user.findFirst({where:{cpf_user:cpf_user}});
+        const findemailExists = await Client.user.findFirst({where:{email:email}});
+        if (findCpfExists)
             throw new Error("cpf ja cadastrado");
-        if (await repo.findOne(email))
+        
+            if (findemailExists)
             throw new Error("email esta em uso por outro usuario");
 
         const PW = await hash(password, 10);
 
-        const User = repo.create({
-            cpf_user,
+        const User = await Client.user.create( {
+            data:{cpf_user,
             name,
             email,
             password: PW
+        }
 
         });
 
 
-        await repo.save(User);
+        
 
 
         return User;

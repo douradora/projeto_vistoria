@@ -4,12 +4,11 @@ import {verify} from "jsonwebtoken";
 import authConfig from '../Config/authConfig.json';
 
 
-export class auth{
-        authHandle(req:Request,res:Response,next:NextFunction){
+export function authToken(req:Request,res:Response,next:NextFunction){
             const authHeader =req.headers.authorization;
 
             if(!authHeader)
-                return res.status(401).send({error:'no token provided'});
+                return res.status(401).send({message:'no token provided'});
             
                 
             const parts = authHeader.split(' ');
@@ -17,7 +16,7 @@ export class auth{
 
            
             if( !(parts.length === 2))
-                return res.status(401).send({error:'token error'});
+                return res.status(401).send({message:'token error'});
 
 
                
@@ -25,13 +24,18 @@ export class auth{
             
             
             if(!/^Bearer$/i.test(scheme))
-                return res.status(401).send({error: 'badly formatted token'});
+                return res.status(401).send({message: 'badly formatted token'});
         
-         
-            verify(token,authConfig.secret)    
+            try{
+            verify(token,authConfig.secret);
             
+            return next();
+            }catch(err){
+                res.status(401).json({
+                    message:"error token"
+                })
+            }
         
         }
 
 
-}

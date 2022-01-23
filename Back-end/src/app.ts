@@ -3,7 +3,7 @@ import "express-async-errors";
 import "reflect-metadata";
 import express, { NextFunction,Response,Request } from "express";
 import cors from 'cors'
-import "./database";
+
 import { routes } from "./routes/routes";
 
 

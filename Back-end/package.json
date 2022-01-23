@@ -5,6 +5,7 @@
     "scripts": {
         "dev": "ts-node-dev  src/server.ts",
         "typeorm": "ts-node-dev node_modules/typeorm/cli.js",
+
         "test": "jest"
     },
     "dependencies": {

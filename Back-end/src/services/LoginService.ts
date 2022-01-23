@@ -1,17 +1,16 @@
 import { compare } from "bcryptjs";
-import { getRepository } from "typeorm";
-import { user } from "../entites/user";
-import { IUSerRequest } from "../interfaces/Iuser";
+import { Client } from "../Prisma/prismaClient";
+
 
 
 
 export class LoginService {
 
-    async execute({ cpf_user, password }: IUSerRequest) {
+    async execute({ cpf_user, password }) {
 
-        const repo = getRepository(user)
+        const User =  await  Client.user.findFirst({where:{cpf_user:cpf_user}});
 
-        const User = await repo.findOne(cpf_user);
+    
 
 
         if (!User)
@@ -20,7 +19,7 @@ export class LoginService {
         const result = await compare(password, `${User.password}`)
         
         if (result) {
-            return user;
+            return User;
         } else {
             throw new Error("usuario ou senha incorretos");
 

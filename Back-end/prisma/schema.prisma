@@ -3,45 +3,46 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = "file:../src/__tests__/database/data.sqlite"
+  provider = "mysql"
+  url      = env("DATABASE_URL")
 }
 
 model Destino {
-  id         String              @id @default(uuid())
-  Descricao  String              @unique
-  created_at DateTime            @default(dbgenerated("now()"))
-  vistoria   vistoria[]          
+  id         Int        @id @default(autoincrement())
+  Descricao  String     @unique
+  created_at DateTime   @default(dbgenerated("now()")) @db.DateTime
+  vistoria   Vistoria[]
+
 }
 
 model Locadora {
-  idLocadora   String              @id @default(uuid())
-  NomeLocadora String              @unique
-  created_at   DateTime            @default(dbgenerated("now()"))
+  idLocadora   Int       @id @default(autoincrement())
+  NomeLocadora String    @unique
+  created_at   DateTime  @default(dbgenerated("now()")) @db.DateTime
   Veiculo      Veiculo[]
 }
 
 model ModeloVeiculo {
-  idModelo   String              @id @default(uuid())
-  montadora  String              @unique
+  idModelo   Int       @id @default(autoincrement())
+  montadora  String    @unique
   modelo     String
-  created_at DateTime            @default(dbgenerated("now()"))
+  created_at DateTime  @default(dbgenerated("now()")) @db.DateTime
   Veiculo    Veiculo[]
 }
 
 model Opm {
-  idOpm      String              @id @default(uuid())
-  NomeOpm    String              @unique
+  idOpm      Int       @id @default(autoincrement())
+  NomeOpm    String    @unique
   ComandoOpm String
-  created_at DateTime            @default(dbgenerated("now()"))
+  created_at DateTime  @default(dbgenerated("now()")) @db.DateTime
   Veiculo    Veiculo[]
 }
 
 model Situacao {
-  id         String              @id @default(uuid())
-  Descricao  String              @unique
-  created_at DateTime            @default(dbgenerated("now()"))
-  vistoria   vistoria[]          
+  id         Int        @id @default(autoincrement())
+  Descricao  String     @unique
+  created_at DateTime   @default(dbgenerated("now()")) @db.DateTime
+  Vistoria   Vistoria[]
 }
 
 model User {
@@ -49,44 +50,46 @@ model User {
   name       String
   email      String   @unique
   password   String
-  created_at DateTime @default(dbgenerated("now()"))
+  created_at DateTime @default(dbgenerated("now()")) @db.DateTime
 }
 
 model Veiculo {
-  Placa         String              @id
-  Prefixo       String              @unique
+  Placa         String        @id
+  Prefixo       String        @unique
   quilometragem Int
-  combustivel   Float               @default(dbgenerated("1/4"))
-  ModeloId      String           
-  OPMID         String           
-  LocadoraId    String           
-  created_at    DateTime            @default(dbgenerated("now()"))
-  Locadora      Locadora            @relation(fields: [LocadoraId], references: [idLocadora], onDelete: Cascade, onUpdate: Cascade)
-  ModeloVeiculo ModeloVeiculo       @relation(fields: [ModeloId], references: [idModelo], onDelete: Cascade, onUpdate: Cascade)
-  Opm           Opm                 @relation(fields: [OPMID], references: [idOpm], onDelete: Cascade, onUpdate: Cascade)
-  vistoria      vistoria[]          
+  combustivel   Float
+  ModeloId      Int
+  OPMID         Int
+  LocadoraId    Int
+  created_at    DateTime      @default(dbgenerated("now()")) @db.DateTime
+  Locadora      Locadora      @relation(fields: [LocadoraId], references: [idLocadora], onDelete: Cascade, onUpdate: Cascade)
+  ModeloVeiculo ModeloVeiculo @relation(fields: [ModeloId], references: [idModelo], onDelete: Cascade, onUpdate: Cascade)
+  Opm           Opm           @relation(fields: [OPMID], references: [idOpm], onDelete: Cascade, onUpdate: Cascade)
+  Vistoria      Vistoria[]
+
+  @@map("Vtr")
 }
 
-
 model funcao {
-  id_funcao   Int            @id @default(autoincrement())
+  id_funcao   Int    @id @default(autoincrement())
   nome_funcao String
 
 
 }
 
-model vistoria {
-  idVistoria    Int                 @id @default(autoincrement())
-  VeiculoPlaca  String
-  id_user       String
-  CondutorCpf   String
-  Nome_condutor String
-  situacaoId    String           
-  destinoId     String           
-  created_at    DateTime            @default(dbgenerated("now()"))
-  Veiculo       Veiculo             @relation(fields: [VeiculoPlaca], references: [Placa], onDelete: Cascade, onUpdate: Cascade)
-  Destino       Destino             @relation(fields: [destinoId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  Situacao      Situacao            @relation(fields: [situacaoId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-
- 
+model Vistoria {
+  idVistoria     Int      @id @default(autoincrement())
+  VeiculoPlaca   String
+  id_user        String
+  CondutorCpf    String
+  Nome_condutor  String
+  situacaoId     Int
+  destinoId      Int
+  tipo_veiculo   String
+  Dados_vistoria Json   
+  Obs            String?  
+  created_at     DateTime @default(dbgenerated("now()")) @db.DateTime
+  Veiculo        Veiculo  @relation(fields: [VeiculoPlaca], references: [Placa], onDelete: Cascade, onUpdate: Cascade)
+  Destino        Destino  @relation(fields: [destinoId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  Situacao       Situacao @relation(fields: [situacaoId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 }

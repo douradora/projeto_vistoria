@@ -1,13 +1,19 @@
-import { createConnection } from "typeorm";
+
+import { Client } from "../../Prisma/prismaClient";
 import { CreateUserService } from "../../services/CreateUserSevice"
 
 
 
-createConnection('default');
 
 describe("testes de criacao de usuario",()=>
     it("CREAR usuario",async ()=>{
     
+ 
+
+
+
+
+        
    const user =  new  CreateUserService();
    
    const sevice =await user.execute({
