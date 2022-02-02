@@ -1,3 +1,6 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
 generator client {
   provider = "prisma-client-js"
 }
@@ -11,7 +14,7 @@ model Destino {
   id         Int        @id @default(autoincrement())
   Descricao  String     @unique
   created_at DateTime   @default(dbgenerated("now()")) @db.DateTime
-  vistoria   Vistoria[]
+  vistoria   Vistoria[] 
 
 }
 
@@ -24,8 +27,8 @@ model Locadora {
 
 model ModeloVeiculo {
   idModelo   Int       @id @default(autoincrement())
-  montadora  String    @unique
-  modelo     String
+  montadora  String    
+  modelo     String    @unique
   created_at DateTime  @default(dbgenerated("now()")) @db.DateTime
   Veiculo    Veiculo[]
 }
@@ -42,20 +45,23 @@ model Situacao {
   id         Int        @id @default(autoincrement())
   Descricao  String     @unique
   created_at DateTime   @default(dbgenerated("now()")) @db.DateTime
-  Vistoria   Vistoria[]
+  Vistoria   Vistoria[] 
 }
 
 model User {
-  cpf_user   String   @id
+  cpf_user   String   @id     @db.VarChar(10)
   name       String
   email      String   @unique
   password   String
-  created_at DateTime @default(dbgenerated("now()")) @db.DateTime
+  Adm        Boolean
+  funcao     Int
+  created_at DateTime   @default(dbgenerated("now()")) @db.DateTime
+  Funcao     Funcao?   @relation(fields: [funcao],references: [id_funcao],onDelete: Cascade,onUpdate: Cascade )
 }
 
 model Veiculo {
-  Placa         String        @id
-  Prefixo       String        @unique
+  Placa         String        @db.VarChar(10) @id
+  Prefixo       String        @db.VarChar(10) @unique
   quilometragem Int
   combustivel   Float
   ModeloId      Int
@@ -65,31 +71,33 @@ model Veiculo {
   Locadora      Locadora      @relation(fields: [LocadoraId], references: [idLocadora], onDelete: Cascade, onUpdate: Cascade)
   ModeloVeiculo ModeloVeiculo @relation(fields: [ModeloId], references: [idModelo], onDelete: Cascade, onUpdate: Cascade)
   Opm           Opm           @relation(fields: [OPMID], references: [idOpm], onDelete: Cascade, onUpdate: Cascade)
-  Vistoria      Vistoria[]
+  Vistoria      Vistoria[]    
 
-  @@map("Vtr")
+
 }
 
-model funcao {
+model Funcao {
   id_funcao   Int    @id @default(autoincrement())
   nome_funcao String
+  User        User[]
 
 
 }
 
 model Vistoria {
   idVistoria     Int      @id @default(autoincrement())
-  VeiculoPlaca   String
-  id_user        String
+  VeiculoPlaca   String   @db.VarChar(10)
+  id_user        String   @db.VarChar(13)
   CondutorCpf    String
   Nome_condutor  String
   situacaoId     Int
   destinoId      Int
-  tipo_veiculo   String
-  Dados_vistoria Json   
-  Obs            String?  
+  tipo_veiculo   String   @db.VarChar(10)
+  Dados_vistoria Json     
+  Obs            String   
   created_at     DateTime @default(dbgenerated("now()")) @db.DateTime
   Veiculo        Veiculo  @relation(fields: [VeiculoPlaca], references: [Placa], onDelete: Cascade, onUpdate: Cascade)
   Destino        Destino  @relation(fields: [destinoId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   Situacao       Situacao @relation(fields: [situacaoId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  
 }

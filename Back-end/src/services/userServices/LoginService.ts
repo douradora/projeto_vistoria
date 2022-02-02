@@ -1,5 +1,5 @@
 import { compare } from "bcryptjs";
-import { Client } from "../Prisma/prismaClient";
+import { Client } from "../../Prisma/prismaClient";
 
 
 

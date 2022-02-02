@@ -17,9 +17,13 @@ app.use(routes);
  * @res  return the errors like a json
  */
 app.use((err:Error,req:Request,res:Response,next:NextFunction)=>{
+
+    
     return res.json({
         status:"Error",
-        message:err.message
+        message:err.message,
+        
+        
     })
 }
 );
