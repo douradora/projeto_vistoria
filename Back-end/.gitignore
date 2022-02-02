@@ -4,3 +4,6 @@
 *.test
 /__tests__
 ormconfig.json
+*.sqlite
+*.db
+*.test.*

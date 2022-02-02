@@ -1,25 +1,23 @@
-import { createConnection } from "typeorm";
-import { CreateUserService } from "../../services/CreateUserSevice"
+
+
+import { createModeloVeiculoService } from "../../services/modeloVeiculosSevice/createModeloVeiculoService";
+import { CreateUserService } from "../../services/userServices/CreateUserSevice"
 
 
 
-createConnection('default');
 
 describe("testes de criacao de usuario",()=>
     it("CREAR usuario",async ()=>{
     
-   const user =  new  CreateUserService();
+         
+   const user =  new CreateUserService()
    
    const sevice =await user.execute({
-        
-         cpf_user:'05828367510',
-         email:'ramon@gmail.com',
-         name:'ramon dourado',
-         password: 'rdb123'
-
-
-
-        })
+ cpf_user:'0676673',
+ email:"ramondgc@gmail.com",
+ name:"ramon do",
+ password:"rdb123"
+              })
 
         expect(sevice).toHaveProperty('cpf_user');
 
