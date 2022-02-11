@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
-import { Ilocadora, LocadoraList } from "../services/locadorasServces/LocadoraList";
+import { createLocadoraservice } from "../services/locadorasServces/createLocadora"
+import { locadoraList,Ilocadora } from "../services/locadorasServces/LocadoraList";
 
 /**
  *  lista todas as locadoras 
@@ -7,10 +8,20 @@ import { Ilocadora, LocadoraList } from "../services/locadorasServces/LocadoraLi
  * @export
  * @class listLocadorasController
  */
-export class listLocadorasController {
+export class locadorasController {
 
     async create(req: Request, res: Response){
          const {nomelocadora} =req.body;
+        
+         if(!nomelocadora){
+             throw new Error("sem dados para salvar");
+         }
+         const locadora = new createLocadoraservice();
+         
+        const createLocadora =await locadora.execute(nomelocadora);
+
+
+        return res.status(200).send(createLocadora);
 
         
 
@@ -23,7 +34,7 @@ export class listLocadorasController {
     }
     async list(req: Request, res: Response) {
         
-        const Locadoralista = new LocadoraList();
+        const Locadoralista = new locadoraList();
         const lista = await Locadoralista.execute();
         res.status(201).send(lista)
 

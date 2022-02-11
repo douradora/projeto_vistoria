@@ -6,7 +6,7 @@ import { idText } from "typescript";
 
 
 
-export class VtrController {
+export class vtrController {
         /**
          * create a new vtr and return the data, if already exist the data return the same
          * @param req 
@@ -30,10 +30,10 @@ export class VtrController {
         }
 
         /**
-         * @vtr expect a string  ,whith one 'placa' or 'prefixo' come to params 
+         * @vtr expect a string  as a parameter , return  one car or nothing
          * @returns the object Json Vtr or Error
          */
-        async Find(req:Request,res:Response){
+        async find(req:Request,res:Response){
                const {vtr} = req.params;
              
 

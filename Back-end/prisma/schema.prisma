@@ -10,14 +10,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Destino {
-  id         Int        @id @default(autoincrement())
-  Descricao  String     @unique
-  created_at DateTime   @default(dbgenerated("now()")) @db.DateTime
-  vistoria   Vistoria[] 
-
-}
-
 model Locadora {
   idLocadora   Int       @id @default(autoincrement())
   NomeLocadora String    @unique
@@ -41,20 +33,15 @@ model Opm {
   Veiculo    Veiculo[]
 }
 
-model Situacao {
-  id         Int        @id @default(autoincrement())
-  Descricao  String     @unique
-  created_at DateTime   @default(dbgenerated("now()")) @db.DateTime
-  Vistoria   Vistoria[] 
-}
+
 
 model User {
   cpf_user   String   @id     @db.VarChar(10)
   name       String
   email      String   @unique
   password   String
-  Adm        Boolean
-  funcao     Int
+  adm        Boolean
+  funcao     Int?
   created_at DateTime   @default(dbgenerated("now()")) @db.DateTime
   Funcao     Funcao?   @relation(fields: [funcao],references: [id_funcao],onDelete: Cascade,onUpdate: Cascade )
 }
@@ -90,14 +77,14 @@ model Vistoria {
   id_user        String   @db.VarChar(13)
   CondutorCpf    String
   Nome_condutor  String
-  situacaoId     Int
-  destinoId      Int
+  situacao       String   @db.Char(2)
+  destinoId      String   
   tipo_veiculo   String   @db.VarChar(10)
   Dados_vistoria Json     
   Obs            String   
   created_at     DateTime @default(dbgenerated("now()")) @db.DateTime
   Veiculo        Veiculo  @relation(fields: [VeiculoPlaca], references: [Placa], onDelete: Cascade, onUpdate: Cascade)
-  Destino        Destino  @relation(fields: [destinoId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  Situacao       Situacao @relation(fields: [situacaoId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  
   
 }

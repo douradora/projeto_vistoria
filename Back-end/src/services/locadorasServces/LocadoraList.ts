@@ -11,7 +11,7 @@ export interface Ilocadora {
 
 
 
-export class LocadoraList {
+export class locadoraList {
 
     async execute() {
 

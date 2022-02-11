@@ -11,7 +11,7 @@ import authconfig from "../Config/authConfig.json"
  * @export
  * @class LoginController
  */
-export class LoginController {
+export class loginController {
 
 
     async handle(req: Request, res: Response) {

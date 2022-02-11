@@ -56,6 +56,8 @@ CREATE TABLE `User` (
     `name` VARCHAR(191) NOT NULL,
     `email` VARCHAR(191) NOT NULL,
     `password` VARCHAR(191) NOT NULL,
+    `adm` BOOLEAN NOT NULL,
+    `funcao` INTEGER NOT NULL,
     `created_at` DATETIME NOT NULL DEFAULT now(),
 
     UNIQUE INDEX `User_email_key`(`email`),
@@ -78,7 +80,7 @@ CREATE TABLE `Veiculo` (
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
-CREATE TABLE `funcao` (
+CREATE TABLE `Funcao` (
     `id_funcao` INTEGER NOT NULL AUTO_INCREMENT,
     `nome_funcao` VARCHAR(191) NOT NULL,
 
@@ -96,11 +98,14 @@ CREATE TABLE `Vistoria` (
     `destinoId` INTEGER NOT NULL,
     `tipo_veiculo` VARCHAR(10) NOT NULL,
     `Dados_vistoria` JSON NOT NULL,
-    `Obs` VARCHAR(191) NOT NULL DEFAULT 'nenhuma',
+    `Obs` VARCHAR(191) NOT NULL,
     `created_at` DATETIME NOT NULL DEFAULT now(),
 
     PRIMARY KEY (`idVistoria`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- AddForeignKey
+ALTER TABLE `User` ADD CONSTRAINT `User_funcao_fkey` FOREIGN KEY (`funcao`) REFERENCES `Funcao`(`id_funcao`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE `Veiculo` ADD CONSTRAINT `Veiculo_LocadoraId_fkey` FOREIGN KEY (`LocadoraId`) REFERENCES `Locadora`(`idLocadora`) ON DELETE CASCADE ON UPDATE CASCADE;

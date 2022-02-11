@@ -5,9 +5,9 @@ import  {IUSerRequest} from '../../interfaces/Iuser';
 
 
 
-export class CreateUserService {
+export class createUserService {
 
-    async execute({ cpf_user, name, email, password }: IUSerRequest) {
+    async execute({ cpf_user, name, email, password,adm}: IUSerRequest) {
 
 
         const findCpfExists = await Client.user.findFirst({where:{cpf_user:cpf_user}});
@@ -26,7 +26,9 @@ export class CreateUserService {
             data:{cpf_user,
             name,
             email,
-            password: pW
+            password: pW,
+            adm,
+            
         }
 
         });

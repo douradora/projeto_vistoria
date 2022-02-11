@@ -10,9 +10,6 @@ export class LoginService {
 
         const User =  await  Client.user.findFirst({where:{cpf_user:cpf_user}});
 
-    
-
-
         if (!User)
             throw new Error("usuario ou senha incorretos");
 
@@ -24,7 +21,7 @@ export class LoginService {
             throw new Error("usuario ou senha incorretos");
        
     
-        return User;
+       
     }
 
 }}

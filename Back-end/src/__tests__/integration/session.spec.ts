@@ -1,13 +1,16 @@
 
 
+import { Client } from "../../Prisma/prismaClient";
 import { createModeloVeiculoService } from "../../services/modeloVeiculosSevice/createModeloVeiculoService";
-import { CreateUserService } from "../../services/userServices/CreateUserSevice"
+import { CreateUserService } from "../../services/userServices/createUserSevice"
 
 
 
 
 describe("testes de criacao de usuario",()=>
-    it("CREAR usuario",async ()=>{
+    
+
+it("CREAR usuario",async ()=>{
     
          
    const user =  new CreateUserService()
@@ -16,11 +19,13 @@ describe("testes de criacao de usuario",()=>
  cpf_user:'0676673',
  email:"ramondgc@gmail.com",
  name:"ramon do",
- password:"rdb123"
+ password:"rdb123",
+ adm:true
               })
 
         expect(sevice).toHaveProperty('cpf_user');
 
     })
+
 
 )

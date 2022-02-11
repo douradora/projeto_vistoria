@@ -1,0 +1,53 @@
+.header {
+    padding: 5px;
+    background: linear-gradient(to right, #ffffff 0%, #0066ff 100%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: #dfdfd1 0.1mm solid;
+    border-radius: 0px 0px 10px 10px;
+    box-shadow: 3px 4px #8d9aad;
+    grid-area: h;
+
+}
+
+#menu-icon{
+    border: none;
+    background:none;
+    border-radius: 20px;
+    padding: 10px;
+
+
+}
+
+#menu-icon:hover{
+    background: #486da5 ;
+   
+    transition: 0.4s;
+
+
+}
+
+.user-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+
+
+
+
+}
+
+.user-info a {
+    font-size: x-large;
+
+
+}
+
+
+@media(min-width:900px){
+    #menu-icon{display: none;}
+    .header{justify-content: end;}
+
+}

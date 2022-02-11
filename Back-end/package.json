@@ -6,7 +6,7 @@
         "dev": "ts-node-dev  src/server.ts",
         "typeorm": "ts-node-dev node_modules/typeorm/cli.js",
         "test": "jest",
-        "seed": "ts-node prisma/seeds/seed.ts"
+        "seed": "ts-node src/prisma/seeds/seed.ts"
     },
     "dependencies": {
         "@prisma/client": "^3.8.1",

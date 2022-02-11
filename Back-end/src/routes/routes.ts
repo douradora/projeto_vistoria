@@ -1,24 +1,38 @@
 
 import {Router } from "express";
-import { CreateUserController } from "../Controllers/CreateUserController";
-import { VtrController } from "../Controllers/VtrController";
-import { listLocadorasController } from "../Controllers/LocadorasController";
-import { LoginController } from "../Controllers/LoginController";
+import { createUserController } from "../Controllers/createUserController";
+import { vtrController } from "../Controllers/vtrController";
+import { locadorasController } from "../Controllers/locadorasController";
+import { loginController } from "../Controllers/loginController";
 import { authToken } from "../middeleware/authToken";
+import { funcaoController } from "../Controllers/funcaoController";
+import { opmController } from "../Controllers/opmController";
+
 
 
 
 
 const routes =Router();
+//post
+routes.post('/createUser',new createUserController().handle);
+routes.post('/createFuncao',new funcaoController().create);
+routes.post('/createCar',new vtrController().create);
+routes.post('/createLocadora',new locadorasController().create)
+routes.post('/createOpm',new opmController().create);
+//get
+routes.get('/login',new loginController().handle);
+routes.get('/listarLocadora',new locadorasController().list);
+routes.get('/listaVtr/:vtr?',new vtrController().find)
+routes.get('/listFuncao',new funcaoController().list);
+routes.get('/listOpm',new opmController().list);
 
-routes.post('/createUser',new CreateUserController().handle);
-routes.get('/login',new LoginController().handle);
-routes.get('/listarLocadora',new listLocadorasController().list);
-routes.get('/listaVtr/:vtr?',new VtrController().Find)
+
+
+
 routes.get('/home',authToken ,(req,res)=>{
 res.send( {"message":"token invalido"})
 });
-routes.post('/createCar',new VtrController().create);
+
 
 
 
