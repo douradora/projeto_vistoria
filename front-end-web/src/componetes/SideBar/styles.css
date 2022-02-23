@@ -44,11 +44,14 @@
 @media(max-width:900px){
     
  .barra-lateral {
+
+     position: fixed;
+     margin-top: 2.4cm;
      display: none;
      flex-direction: row;
  }
  .visible{
-     width: 100%;
+    width: 100%;
     display:flex;
 
 

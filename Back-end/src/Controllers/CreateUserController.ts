@@ -1,37 +1,26 @@
-import { Request,Response } from "express";
+import { Request, Response } from "express";
 import { createUserService } from "../services/userServices/createUserSevice";
 
 
-export class createUserController{
-    
-    async handle(req:Request,res:Response){
-            const {cpf_user,email,password,name,adm} =req.body;
-            
-             if(!cpf_user||!email||!name||!password){
-                throw new Error('Todos os campos devem ser preechidos');
-            }
+export class createUserController {
 
-            const create = new createUserService();
+    async handle(req: Request, res: Response) {
+        const { cpf_user, email, password, name, adm } = req.body;
 
-            const result = await  create.execute({cpf_user,name,email,password,adm});
+        if (!cpf_user || !email || !name || !password) {
+            throw new Error('Todos os campos devem ser preechidos');
+        }
 
-            if(result instanceof Error){
-                throw new Error("usuario nao salvo algo de errado aconteceu");
-            }
-            
-                
+        const create = new createUserService();
 
-        
-            return res.status(200).send({"message":"usuario cadastrado"});
+        const result = await create.execute({ cpf_user, name, email, password, adm });
+
+        if (result instanceof Error) {
+            throw new Error("usuario nao salvo algo de errado aconteceu");
+        }
+
+        return res.status(200).send({ "message": "usuario cadastrado" });
 
 
     }
-
-
-
-
-
-
-
-
 }

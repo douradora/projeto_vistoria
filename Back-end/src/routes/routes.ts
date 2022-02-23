@@ -7,6 +7,7 @@ import { loginController } from "../Controllers/loginController";
 import { authToken } from "../middeleware/authToken";
 import { funcaoController } from "../Controllers/funcaoController";
 import { opmController } from "../Controllers/opmController";
+import { vistoriaController } from "../Controllers/vistoriaController";
 
 
 
@@ -25,6 +26,7 @@ routes.get('/listarLocadora',new locadorasController().list);
 routes.get('/listaVtr/:vtr?',new vtrController().find)
 routes.get('/listFuncao',new funcaoController().list);
 routes.get('/listOpm',new opmController().list);
+routes.get('/listVistorias',new vistoriaController().listvistoria);
 
 
 

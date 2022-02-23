@@ -1,5 +1,7 @@
 .header {
     padding: 5px;
+    position: fixed;
+    width: 100%;
     background: linear-gradient(to right, #ffffff 0%, #0066ff 100%);
     display: flex;
     justify-content: space-between;
@@ -16,6 +18,7 @@
     background:none;
     border-radius: 20px;
     padding: 10px;
+    
 
 
 }

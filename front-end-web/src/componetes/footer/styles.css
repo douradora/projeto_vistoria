@@ -5,3 +5,16 @@
     grid-area: F;
 
 }
+
+
+@media(max-width:900px){
+    .rodape{ 
+        position: fixed;
+
+
+
+    }
+
+
+
+}

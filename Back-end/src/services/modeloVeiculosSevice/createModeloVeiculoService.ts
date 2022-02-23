@@ -9,6 +9,12 @@ interface Imodelo {
 
 export class createModeloVeiculoService {
 
+    /**
+     * 
+     * @param 
+     * @returns 
+     */
+
     async execute({ montadora, modelo }: Imodelo) {
 
         const findModelo = await Client.modeloVeiculo.findFirst({ where: { modelo } });

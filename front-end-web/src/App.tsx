@@ -9,6 +9,7 @@ import Footer from './componetes/footer';
 import Home  from './pages/Home/Home';
 import Vistoria from './pages/Vistoria/Vistoria';
 import { useState } from 'react';
+import Cadastrar from './pages/Cadastrar';
 
 
 
@@ -29,6 +30,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home/>} />
         <Route path='/vistorias' element={<Vistoria/>} />
+        <Route path='/cadastrar' element={<Cadastrar/>}/>
       </Routes>
     
       <Footer />

@@ -1,30 +1,37 @@
 import { ImodeloVistoria } from "../../interfaces/ImodeloVistoria";
 import { Client } from "../../Prisma/prismaClient";
+import { v4 as uuidV4} from "uuid";
 
 export interface Ivistoria{
-    VeiculoPlaca:string
+    veiculoPlaca:string
     id_user:string
-    CondutorCpf:string
-    Nome_condutor:string
-    Obs:string
-    destinoId:number
-    situacaoId:number
+    condutorCpf:string
+    nome_condutor:string
+    obs:string
+    destinoId:string
+    situacao:string
        
 }
-
+/**
+ *  create vistoria and return the same
+ *
+ * @export
+ * @class createVistoriaService
+ */
 export class createVistoriaService{
 
-        async execute({VeiculoPlaca,id_user,CondutorCpf,Nome_condutor,Obs,destinoId,situacaoId}:Ivistoria,{dadosVistoria,tipoVeiculo}:ImodeloVistoria){
+        async execute({veiculoPlaca,id_user,condutorCpf,nome_condutor,obs,destinoId,situacao}:Ivistoria,{dadosVistoria,tipoVeiculo}:ImodeloVistoria){
             const Vistoria = Client.vistoria.create(
                 {data:{
-                    VeiculoPlaca,
-                    Dados_vistoria:dadosVistoria,
+                    idVistoria:uuidV4(),
+                    veiculoPlaca,
+                    dados_vistoria:dadosVistoria,
                     id_user,
-                    CondutorCpf,
-                    Nome_condutor,
-                    Obs,
+                    condutorCpf,
+                    nome_condutor,
+                    obs,
                     destinoId,
-                    situacaoId,
+                    situacao,
                     tipo_veiculo:tipoVeiculo,
                     }
                 

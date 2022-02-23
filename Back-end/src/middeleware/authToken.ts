@@ -3,6 +3,11 @@ import {verify} from "jsonwebtoken";
  import authConfig from '../Config/authConfig.json';
 
 
+
+/**
+ *
+ * 
+ */
 export function authToken(req:Request,res:Response,next:NextFunction){
             const authHeader =req.headers.authorization;
             

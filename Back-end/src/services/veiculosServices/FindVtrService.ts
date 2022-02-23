@@ -4,7 +4,7 @@ import { Client } from "../../Prisma/prismaClient";
 
 export class FindVtrService{
         async execute(dado){
-            console.log(dado);
+           
          if(dado===undefined){
              const Find  = await Client.veiculo.findMany();
         
@@ -12,7 +12,7 @@ export class FindVtrService{
           }else{
             
             
-        const Find  = await Client.veiculo.findFirst({where:{Placa:dado}});
+        const Find  = await Client.veiculo.findFirst({where:{placa:dado}});
 
         
         return Find;

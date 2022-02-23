@@ -2,3 +2,22 @@
     width: 100%;
 
 }
+
+.tabela{
+    margin: 10px;
+
+
+
+}
+
+@media(max-width:900px){
+    .conteudo{
+        margin-top: 5cm;
+        margin-bottom: 0.2cm;
+        
+        
+        
+    }
+
+
+}

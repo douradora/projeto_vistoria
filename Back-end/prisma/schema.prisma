@@ -19,7 +19,7 @@ model Locadora {
 
 model ModeloVeiculo {
   idModelo   Int       @id @default(autoincrement())
-  montadora  String    
+  montadora  String
   modelo     String    @unique
   created_at DateTime  @default(dbgenerated("now()")) @db.DateTime
   Veiculo    Veiculo[]
@@ -33,32 +33,30 @@ model Opm {
   Veiculo    Veiculo[]
 }
 
-
-
 model User {
-  cpf_user   String   @id     @db.VarChar(10)
+  cpf_user   String   @id @db.VarChar(15)
   name       String
   email      String   @unique
   password   String
-  adm        Boolean
+  adm        Boolean? @default(false)
   funcao     Int?
-  created_at DateTime   @default(dbgenerated("now()")) @db.DateTime
-  Funcao     Funcao?   @relation(fields: [funcao],references: [id_funcao],onDelete: Cascade,onUpdate: Cascade )
+  created_at DateTime @default(dbgenerated("now()")) @db.DateTime
+  Funcao     Funcao?  @relation(fields: [funcao], references: [id_funcao], onDelete: Cascade, onUpdate: Cascade)
 }
 
 model Veiculo {
-  Placa         String        @db.VarChar(10) @id
-  Prefixo       String        @db.VarChar(10) @unique
+  placa         String        @id @db.VarChar(10)
+  prefixo       String        @unique @db.VarChar(10)
   quilometragem Int
   combustivel   Float
-  ModeloId      Int
+  modeloId      Int
   OPMID         Int
-  LocadoraId    Int
+  locadoraId    Int
   created_at    DateTime      @default(dbgenerated("now()")) @db.DateTime
-  Locadora      Locadora      @relation(fields: [LocadoraId], references: [idLocadora], onDelete: Cascade, onUpdate: Cascade)
-  ModeloVeiculo ModeloVeiculo @relation(fields: [ModeloId], references: [idModelo], onDelete: Cascade, onUpdate: Cascade)
+  locadora      Locadora      @relation(fields: [locadoraId], references: [idLocadora], onDelete: Cascade, onUpdate: Cascade)
+  modeloVeiculo ModeloVeiculo @relation(fields: [modeloId], references: [idModelo], onDelete: Cascade, onUpdate: Cascade)
   Opm           Opm           @relation(fields: [OPMID], references: [idOpm], onDelete: Cascade, onUpdate: Cascade)
-  Vistoria      Vistoria[]    
+  vistoria      Vistoria[]
 
 
 }
@@ -71,20 +69,28 @@ model Funcao {
 
 }
 
-model Vistoria {
-  idVistoria     Int      @id @default(autoincrement())
-  VeiculoPlaca   String   @db.VarChar(10)
-  id_user        String   @db.VarChar(13)
-  CondutorCpf    String
-  Nome_condutor  String
-  situacao       String   @db.Char(2)
-  destinoId      String   
-  tipo_veiculo   String   @db.VarChar(10)
-  Dados_vistoria Json     
-  Obs            String   
-  created_at     DateTime @default(dbgenerated("now()")) @db.DateTime
-  Veiculo        Veiculo  @relation(fields: [VeiculoPlaca], references: [Placa], onDelete: Cascade, onUpdate: Cascade)
+model Photos {
+  idPhotos   String   @id @default(uuid())
+  urlPhotos  String
+  created_at DateTime @default(dbgenerated("now()")) @db.DateTime()
+  Vistoria   Vistoria @relation(fields: [idPhotos], references: [idVistoria], onDelete: Cascade, onUpdate: Cascade)
 
-  
-  
+}
+
+model Vistoria {
+  idVistoria     String   @id @default(uuid())
+  veiculoPlaca   String   @db.VarChar(10)
+  id_user        String   @db.VarChar(13)
+  condutorCpf    String
+  nome_condutor  String
+  situacao       String   @db.Char(2)
+  destinoId      String
+  tipo_veiculo   String   @db.VarChar(10)
+  dados_vistoria Json
+  obs            String
+  created_at     DateTime @default(dbgenerated("now()")) @db.DateTime
+  Veiculo        Veiculo  @relation(fields: [veiculoPlaca], references: [placa], onDelete: Cascade, onUpdate: Cascade)
+  Photos         Photos[]
+
+
 }

@@ -22,7 +22,7 @@ const SideBar: React.FC<Sidebarprops> = ({ display }: Sidebarprops) => {
 
       <Link className='botao' to='/'>Home</Link>
       <Link className='botao' to='/vistorias'>Vistoria</Link>
-      <Link className='botao' to='#'>algo</Link>
+      <Link className='botao' to='/cadastrar'>Cadastrar</Link>
       <Link className='botao' to='#'>Algo2</Link>
 
 

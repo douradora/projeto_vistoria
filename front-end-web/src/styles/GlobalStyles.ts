@@ -15,6 +15,7 @@ export default createGlobalStyle`
 
    
     #root {
+    height: 100vh;
     font-size: 100%;
     background-color: #ffffe6;
     display: grid;
@@ -34,15 +35,14 @@ export default createGlobalStyle`
 @media(max-width:900px){
 
     #root{
-    height: 100%;
+ 
     font-size: 100%;
     background-color: #ffffe6;
     display:flex;
-    flex-direction:column;
-   
+        flex-direction:column;
+    }
 
-
-                                    }
+    
 
 }
 

@@ -1,5 +1,5 @@
 
-.table {
+table {
     border-collapse: collapse;
     width: 100%;
 }
@@ -11,7 +11,7 @@ th, td {
     
 }
 
-tr:nth-child(even){
+tbody:nth-child(even){
 background-color: rgba(217, 217, 217,4) ;
 
 

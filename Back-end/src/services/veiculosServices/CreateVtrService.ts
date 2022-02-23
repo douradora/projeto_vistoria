@@ -1,24 +1,30 @@
-import internal from "stream";
+
 import { Client } from "../../Prisma/prismaClient";
 
 export interface Ivtr {
-    Placa: string
-    Prefixo: string
+    placa: string
+    prefixo: string
     quilometragem: number
     combustivel: number
-    ModeloId: number
+    modeloId: number
     OPMID: number
-    LocadoraId: number
+    locadoraId: number
 
 
 }
 
 export class CreateVtrService {
-    async execute({ Placa, Prefixo, quilometragem, combustivel, ModeloId, OPMID, LocadoraId }: Ivtr) {
+    /**
+     * 
+     * @param 
+     * @returns 
+     */
+    
+    async execute({ placa, prefixo, quilometragem, combustivel, modeloId, OPMID, locadoraId }: Ivtr) {
 
        
        
-        const FindVtr = await Client.veiculo.findFirst({ where: { Placa: Placa, } });
+        const FindVtr = await Client.veiculo.findFirst({ where: { placa: placa, } });
        
 
 
@@ -26,22 +32,22 @@ export class CreateVtrService {
         if (FindVtr) {
             return FindVtr;
         } else {
-            const FindPrefixo = await Client.veiculo.findFirst({ where: { Prefixo: Prefixo } });
+            const FindPrefixo = await Client.veiculo.findFirst({ where: { prefixo: prefixo } });
            
             if (FindPrefixo) {
-                throw new Error(`este prefixo ja esta associado a o veiculo  Placa: ${FindPrefixo.Placa}`)
+                throw new Error(`este prefixo ja esta associado a o veiculo  Placa: ${FindPrefixo.placa}`)
             }
             
 
             const Vtr = await Client.veiculo.create({
                 data: {
-                    Placa,
-                    Prefixo,
-                    combustivel,
-                    quilometragem,
-                    ModeloId,
-                    LocadoraId,
-                    OPMID
+                    placa,
+                     combustivel,
+                     prefixo,
+                     quilometragem,
+                     OPMID,
+                     locadoraId,
+                     modeloId
                 }
 
 

@@ -15,14 +15,14 @@ export class vtrController {
          */
        
         async create(req: Request, res: Response) {
-                const { LocadoraId, ModeloId, OPMID, Placa, Prefixo, combustivel, quilometragem } = req.body;
+                const { locadoraId, modeloId, OPMID, placa, prefixo, combustivel, quilometragem } = req.body;
 
-                if (!LocadoraId || !ModeloId || !OPMID || !Placa || !Prefixo || !combustivel || !quilometragem){
+                if (!locadoraId || !modeloId || !OPMID || !placa || !prefixo || !combustivel || !quilometragem){
                         throw new Error("dados Imcompletos para cadastro de Veiculo")
                 }
 
                 const createVtr = new CreateVtrService();
-                const veiculo = await createVtr.execute({ LocadoraId, ModeloId, OPMID, Placa, Prefixo, combustivel, quilometragem })
+                const veiculo = await createVtr.execute({ locadoraId, modeloId, OPMID, placa, prefixo, combustivel, quilometragem })
                 return res.status(201).send(veiculo)
 
 
@@ -45,8 +45,8 @@ export class vtrController {
                         throw new Error("nao foi encontrado nenhuma Vtr com esse paramentro");
                         
                 }
-                
-                res.status(200).send({Vtr});
+
+          return   res.status(200).send({Vtr});
                 
 
         }
