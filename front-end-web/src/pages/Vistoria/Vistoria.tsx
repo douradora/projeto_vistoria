@@ -30,13 +30,15 @@ function Vistoria() {
 
 
 
-    if (errorConnection) {
-    return(
-            <div className='errorAdvise'>Nao foi possivel conectar</div>
-        )
-    } else {
-        return (
+  
 
+            
+        
+    
+        return (
+            errorConnection? 
+            
+            <div className='errorAdvice'>Nao foi possivel conectar</div> :
 
             <div className='tabela'>
                 <Table nome='vistorias'>
@@ -52,7 +54,7 @@ function Vistoria() {
 
 
         )
-    }
+    
 
 }
 

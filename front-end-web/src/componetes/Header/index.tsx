@@ -20,8 +20,8 @@ export const Header: React.FC<headerProps> = (props:headerProps)=>{
 
 
     return(
-        <header className="header">
-        <button onClick={props.acao} id="menu-icon" className="menu">
+        <header   className="header">
+        <button  onClick={props.acao}    id="menu-icon" className="menu">
             <img src={menu} alt=""/>
         </button>
         <div className="user-info">
