@@ -10,6 +10,14 @@
 
 }
 
+.errorAdvise{
+    text-align: center;
+    background-color:bisque;
+
+
+
+}
+
 @media(max-width:900px){
     .conteudo{
         margin-top: 5cm;

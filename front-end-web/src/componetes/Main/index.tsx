@@ -1,31 +1,24 @@
 import React from 'react';
 
-import './styles.css';
-interface MainProps{
-
-
-
+interface MainProps {
 }
-
-
-
 const Main: React.FC<MainProps> = (props) => {
-  return(
-  
-     <div className='corpo' >
-      
+  return (
+
+    <div className='corpo' >
+
       <main className="conteudo">
-            {props.children}
+        {props.children}
       </main>
-  
-  
-  
-      </div>
 
- 
 
-  
-    );
+
+    </div>
+
+
+
+
+  );
 }
 
 export default Main;

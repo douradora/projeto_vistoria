@@ -1,6 +1,6 @@
 .header {
     padding: 5px;
-    position: fixed;
+   
     width: 100%;
     background: linear-gradient(to right, #ffffff 0%, #0066ff 100%);
     display: flex;
@@ -51,6 +51,8 @@
 
 @media(min-width:900px){
     #menu-icon{display: none;}
-    .header{justify-content: end;}
+    .header{
+       
+        justify-content: end;}
 
 }

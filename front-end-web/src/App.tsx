@@ -1,43 +1,43 @@
 
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+
 import GlobalStyles from './styles/GlobalStyles';
 import { Header } from './componetes/Header';
-import SideBar from './componetes/SideBar'
-
-
+import SideBar, { IbuttonList } from './componetes/SideBar'
 import Footer from './componetes/footer';
-import Home  from './pages/Home/Home';
-import Vistoria from './pages/Vistoria/Vistoria';
+import Home from './pages/Home/Home';
+
 import { useState } from 'react';
-import Cadastrar from './pages/Cadastrar';
+
+import Main from '../src/componetes/Main';
+import { Outlet } from 'react-router-dom';
 
 
+export function App() {
 
-function App() {
+  const buttonSidebar: IbuttonList[] = [{ nome: "Home", className: "botao", path: "/" },
+  { nome: "Vistorias", className: "botao", path: "vistorias" },
+  { nome: "Cadastrar", className: "botao", path: "cadastrar" }];
 
-    const [display,setDislay] = useState<boolean>(true)
+  const [display, setDislay] = useState<boolean>(false)
 
-    function hiddenMenu(){  
-          setDislay(!display);
+  function hiddenMenu() {
+    setDislay(!display);
 
-    }
+  }
 
   return (
-    <BrowserRouter>
-  
-      <Header user='Usuario' acao={hiddenMenu} />
-      <SideBar display={display}/>
-      <Routes>
-        <Route path='/' element={<Home/>} />
-        <Route path='/vistorias' element={<Vistoria/>} />
-        <Route path='/cadastrar' element={<Cadastrar/>}/>
-      </Routes>
-    
+
+    <>
+    <Header user='Usuario' acao={hiddenMenu} />
+
+      <SideBar buttonList={buttonSidebar} display={display} />
+      <Main>
+        <Outlet />
+      </Main>
+
       <Footer />
 
-     
-      <GlobalStyles />
-    </BrowserRouter>
+      <GlobalStyles /></>
 
   )
 }

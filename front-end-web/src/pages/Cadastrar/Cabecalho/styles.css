@@ -1,0 +1,16 @@
+.cabeca{
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+  
+
+
+
+}
+
+.cabeca input{
+width: 80%;
+margin: 2px;
+
+
+}

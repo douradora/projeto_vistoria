@@ -4,13 +4,18 @@ import React from 'react';
 
 interface tbodyProps {
     dados:string[]
+    key?:number
 
 
 
 }
 
-
-const Tbody: React.FC<tbodyProps> = ({dados,...rest}:tbodyProps) => {
+/**
+ * 
+ * @param dados dados que vao povoar a tabela
+ * @returns 
+ */
+const Tbody: React.FC<tbodyProps> = ({dados,key,...rest}:tbodyProps) => {
 
 
   
@@ -20,7 +25,7 @@ const Tbody: React.FC<tbodyProps> = ({dados,...rest}:tbodyProps) => {
     <tbody {...rest} >
         {
             dados.map((value)=>{
-                return <td>{value}</td>
+                return <td key={key}>{value}</td>
             })
             
         }

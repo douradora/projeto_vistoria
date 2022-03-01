@@ -1,11 +1,15 @@
-.barra-lateral {
+.nav-lateral {
+    width: 100%;
 
+}
+
+.barra-lateral {
     width: 150px;
     border-right: solid #dfdfd1 0.1mm;
     background-color: #ffffff;
     display: flex;
     border-radius: 10px;
-    box-shadow: 2px 2px 2px  #8d9aad;
+    box-shadow: 2px 2px 2px #8d9aad;
     padding: 2%;
     flex-direction: column;
     gap: 10px;
@@ -13,49 +17,67 @@
     grid-area: S;
     transition: 0.2s;
 
-
-
-
 }
+
+
 
 
 .barra-lateral .botao {
+
+    text-align: center;
+    color: black;
     border: none;
-    height: 100px;
+    height: 20px;
     width: 100%;
     background-color: #89a8d6;
-    border-radius: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap:5px;
-
-
+    gap: 5px;
+    margin: 5px;
 
 
 }
+.botao.ativo{
+    background-color: #193b6e;
+    height: 25px;
+    transition: 400ms;
+ }
 
-.barra-lateral .botao:hover {
+
+
+
+.botao:hover {
     background-color: #193b6e;
     transition: 400ms;
 
 }
 
-@media(max-width:900px){
-    
- .barra-lateral {
-
-     position: fixed;
-     margin-top: 2.4cm;
-     display: none;
-     flex-direction: row;
- }
- .visible{
-    width: 100%;
-    display:flex;
 
 
- }
+
+
+
+
+@media(max-width:900px) {
+
+    .barra-lateral {
+       
+        position: fixed;
+        margin-top: 2.4cm;
+        display: none;
+        flex-direction: row;
+        transition: 0.4s;
+    }
+
+    .visible {
+
+        width: 30%;
+        display: flex;
+        transition: 0.4s;
+
+
+    }
 
 
 

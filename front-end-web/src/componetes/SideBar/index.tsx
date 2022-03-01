@@ -1,29 +1,45 @@
 import React, { useEffect, useState } from 'react';
-import { Link} from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import './styles.css';
 
-export interface Sidebarprops {
-  display?: boolean
+export interface IbuttonList {
 
-
+  nome: string
+  path: string
+  className?: string
 
 }
 
-const SideBar: React.FC<Sidebarprops> = ({ display }: Sidebarprops) => {
-        const [visible,setvisible] = useState<string>("visible")
+export interface Sidebarprops {
+  display?: boolean
+  buttonList: IbuttonList[]
+}
 
-      useEffect(()=>{
-          display?setvisible(" visible"):setvisible(" ");
+const SideBar: React.FC<Sidebarprops> = ({ buttonList, display }: Sidebarprops, ...rest) => {
+  const [visible, setvisible] = useState<string>("visible")
 
-      },[display])
+  //seta a visibilidade da barra lateral 
+  useEffect(() => {
+    display ? setvisible(" visible") : setvisible(" ");
+
+  }, [display])
 
   return (
-    <aside id="barra-lateral" className={"barra-lateral " + `${visible}`} >
+    <aside  id="barra-lateral" {...rest} className={"barra-lateral " + `${visible}`} >
+      <nav className="nav-lateral">
 
-      <Link className='botao' to='/'>Home</Link>
-      <Link className='botao' to='/vistorias'>Vistoria</Link>
-      <Link className='botao' to='/cadastrar'>Cadastrar</Link>
-      <Link className='botao' to='#'>Algo2</Link>
+        {buttonList.map((value,index) => {
+
+          return <NavLink key={value.nome}  className={({isActive})=>isActive? "ativo botao" : "botao"} to={value.path}>{value.nome}</NavLink>
+          
+          
+          })}
+
+
+      </nav>
+
+
+
 
 
 
