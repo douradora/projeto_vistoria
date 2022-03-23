@@ -1,3 +1,13 @@
+#conteiner-info{
+ width: 300px;
+ height: 100%;
+ padding-left: 2%;
+ padding-top: 2%;
+ display: flex;
+ flex-direction: column;
+ gap: 5px;
+
+}
 
 .infors{
     display: flex;
@@ -7,22 +17,44 @@
     
 }
 
-
-input{
-    width: 300px;
-    height: 30px;
-    outline: none;
-    border-radius: 5px;
-    border: none;
-    background-color: antiquewhite;
-
+.infors .radioBox input{
+    height: 20px;
+    width: 30px;
 
 }
 
-input:focus{
-  
-    
 
+
+.infors .radioBox{
+
+    background-color: #47444454;
+    width: 300px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    
+    
+}
+
+.infors .radioBox label:focus {
+
+    background-color: #47444498;
+
+}
+
+.infors .radioBox:hover{
+
+    background-color: #47444498;
+
+}
+
+.infors .radioBox label{
    
+    
+    height: 100%;
+    width: 100%;
+    padding: 3px;
+ 
 
 }

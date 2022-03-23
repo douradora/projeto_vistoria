@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { useField } from '@unform/core';
 
-
 interface Props{
     name:string
     label?:string
@@ -10,12 +9,12 @@ interface Props{
 
 }
 
-type InputProps = JSX.IntrinsicElements['input'] & Props;
+type InputProps = JSX.IntrinsicElements['textarea'] & Props;
 
 
- const Input: React.FC<InputProps> = ({name,label,...rest}:InputProps) => {
+ const TextArea: React.FC<InputProps> = ({name,label,...rest}:InputProps) => {
 
-    const inputRef = useRef<HTMLInputElement>(null);
+    const inputRef = useRef<HTMLTextAreaElement>(null);
         
     const {fieldName,defaultValue,registerField,error}=useField(name);
 
@@ -43,7 +42,7 @@ type InputProps = JSX.IntrinsicElements['input'] & Props;
     return (
         <>
         {label && <label htmlFor={fieldName}>{label} </label>}
-        <input id={fieldName}
+        <textarea id={fieldName}
         ref={inputRef}
         defaultValue={defaultValue}
         {...rest} />
@@ -53,4 +52,4 @@ type InputProps = JSX.IntrinsicElements['input'] & Props;
   );
 }
 
-export default Input;
+export default TextArea;

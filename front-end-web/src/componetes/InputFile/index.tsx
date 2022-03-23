@@ -1,10 +1,10 @@
-import React, { useEffect, useRef } from 'react';
 import { useField } from '@unform/core';
-
+import React, { useEffect, useRef } from 'react';
 
 interface Props{
     name:string
     label?:string
+    imageLabel?:string
 
 
 
@@ -13,7 +13,9 @@ interface Props{
 type InputProps = JSX.IntrinsicElements['input'] & Props;
 
 
- const Input: React.FC<InputProps> = ({name,label,...rest}:InputProps) => {
+// import { Container } from './styles';
+
+const InputFile:React.FC<InputProps> = ({name,label,imageLabel,...rest}:InputProps) => {
 
     const inputRef = useRef<HTMLInputElement>(null);
         
@@ -26,7 +28,7 @@ type InputProps = JSX.IntrinsicElements['input'] & Props;
             name:fieldName,
             ref:inputRef,
             getValue: ref=>{
-              return  ref.current.value
+              return ref.current.files;
             },
             setValue:(ref,value)=>{
                 ref.current.value = value
@@ -41,16 +43,24 @@ type InputProps = JSX.IntrinsicElements['input'] & Props;
   
   
     return (
-        <>
-        {label && <label htmlFor={fieldName}>{label} </label>}
+        <div>
+        {label && <label htmlFor={fieldName}>
+        {label} 
+        {imageLabel?<img src={imageLabel} alt={imageLabel}/> :''} 
+        
+        
+        </label>}
+        
+
         <input id={fieldName}
+        type="file"
         ref={inputRef}
         defaultValue={defaultValue}
         {...rest} />
         
-        </>
+        </div>
         
   );
 }
 
-export default Input;
+export default InputFile;

@@ -1,3 +1,4 @@
+import { Scope } from '@unform/core';
 import React from 'react';
 
 import RadioInput from '../../../componetes/radioInput';
@@ -7,9 +8,10 @@ import './styles.css';
 
 const Infors: React.FC = () => {
   return (
-    <section className='infors'>
-        <RadioInput name='situacao' options={situacao}/>
-
+    <section key="infors-sections" id='conteiner-info' className='infors'>
+        <Scope path='situacao'>
+        <RadioInput   name='situacao' options={situacao}/>
+        </Scope>
     </section>
 
 

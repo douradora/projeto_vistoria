@@ -1,0 +1,54 @@
+.photos {
+    align-items: center;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    overflow: auto;
+}
+
+.photos label {
+    
+    font: 0.7em sans-serif;
+    display: flex;
+    flex-direction: column-reverse;
+    border: solid;
+    width:100px;
+    height: 100px;
+    border-radius: 50%; 
+    align-items: center;
+    padding: 20px;
+
+}
+.photos label img {
+    width: 100%;
+    
+
+
+
+}
+.photos label:hover {
+    background: #47444410;
+
+}
+
+.photos input {
+    display: none;
+
+
+}
+
+.photos .card-photos{
+   display: flex;
+   flex-wrap: wrap;
+   gap: 3px;
+  
+
+}
+
+.photos .card-photos img{
+    border: solid  #0000003d;
+    border-radius: 10%;
+    width: 300px;
+    height: 150px;
+    object-fit: cover;
+}

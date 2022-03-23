@@ -21,7 +21,7 @@ export const navButton:IbuttonList[]=[
     {nome:"Observaçoes",path:"obs"},
     {nome:"Dados do Veiculo",path:"dadosVistoria"},
     {nome:"Fotos",path:"fotos"},
- 
+    {nome:"Contutor",path:"condutor"},
 
 
 

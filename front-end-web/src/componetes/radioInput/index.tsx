@@ -3,8 +3,8 @@ import { useField } from '@unform/core';
 import "./styles.css"
 
 export interface IOptions {
-    id: string|number
-    label: string
+    id: string | number
+    label?: string
 }
 
 interface Props {
@@ -18,7 +18,7 @@ interface Props {
 type InputProps = JSX.IntrinsicElements['input'] & Props;
 
 
-function RadioInput({ name, type, options, ...rest }: InputProps) {
+function RadioInput({ name, type, options, className = "radioBox", ...rest }: InputProps) {
 
     const inputRef = useRef<HTMLInputElement[]>([]);
 
@@ -47,22 +47,27 @@ function RadioInput({ name, type, options, ...rest }: InputProps) {
     return (
         <>
             {options.map((option, index) => {
-                return(
-                <div className='radioBox'>
-                <label key={option.id} htmlFor={option.id}>{option.label} </label>
-                
-                <input
-                        id={option.id}
-                        ref={elRef => (inputRef.current[index] = elRef)}
-                        type="radio"
-                        name={fieldName}
-                        value={option.id}
-                        defaultChecked={defaultValue === option.id} />
-                </div>
-                   
-               
+                return (
+                    <div   key={`${option.label}-${index}-div`} className={className}>
+                        <label   key={`${option.label}-${index}-label`} htmlFor={option.id}>
+
+                            <input
+                                required
+                                key={`${option.label}-${index}-input`}
+                                id={option.id}
+                                ref={elRef => (inputRef.current[index] = elRef)}
+                                type="radio"
+                                name={fieldName}
+                                value={option.id}
+                                
+                                defaultChecked={defaultValue === option.id} />
+                                {option.label}
+                        </label>
+                    </div>
+
+
                 )
-                
+
 
             }
 

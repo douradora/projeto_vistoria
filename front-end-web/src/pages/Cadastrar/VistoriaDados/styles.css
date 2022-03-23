@@ -1,0 +1,55 @@
+#conteiner-dados-vistoria{
+    padding: 2%;
+    width: 60%;
+
+
+}
+
+#cap{
+    display: flex;
+    
+}
+
+#cap label{
+    width: 50%;
+}
+
+#campos{
+    align-items: center;
+    width: 50%;
+    display: flex;
+    gap:7px;
+    
+}
+
+
+.item{
+    
+    align-items: center;
+    display: flex;
+    gap: 5px;
+
+}
+
+.item:nth-child(even){
+    background-color: rgba(217, 217, 217,4) ;
+}
+
+
+.item label {
+    width: 50%;
+    justify-content: center;
+}
+
+.option{
+    width: 50%;
+    display: flex;
+    gap:5px
+}
+.situacao{
+    display: flex;
+    flex-direction: column;
+    width: 30px;
+     
+}
+

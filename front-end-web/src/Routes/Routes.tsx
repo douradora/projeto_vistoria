@@ -4,8 +4,12 @@ import {App} from '../App';
 import Cadastrar from '../pages/Cadastrar';
 import Cabecalho from '../pages/Cadastrar/Cabecalho';
 import Infors from '../pages/Cadastrar/infors';
+import Obs from '../pages/Cadastrar/Obs';
 import Home from '../pages/Home/Home';
 import Vistoria from '../pages/Vistoria/Vistoria';
+import VistoriaDados from '../pages/Cadastrar/VistoriaDados';
+import Photos from '../pages/Cadastrar/Photos';
+import Condutor from '../pages/Cadastrar/Condutor';
 
 // import { Container } from './styles';
 
@@ -17,12 +21,13 @@ export const AppRoutes: React.FC = () => {
                     <Route index   element={<Home/>}/>
                     <Route path='vistorias' element={<Vistoria />} />
                      <Route path='cadastrar' element={<Cadastrar />} >
-                        <Route index  element={<Cabecalho/>}/>
+                        <Route index  element={<Cabecalho/>} />
                         <Route path="dadosVeiculo" element={<Cabecalho/>}/>
                         <Route path='infor'  element={<Infors/>}/>
-                        <Route path='obs'  element={<p>observa</p>}/>
-                        <Route path='dadosVistoria'  element={<p>vistoria</p>}/>
-                        <Route path='fotos'  element={<p>photos</p>}/>
+                        <Route path='obs'  element={<Obs/>}/>
+                        <Route path='dadosVistoria'  element={<VistoriaDados/>}/>
+                        <Route path='fotos'  element={<Photos/>}/>
+                        <Route path='condutor'  element={<Condutor/>}/>
 
 
                         </Route>

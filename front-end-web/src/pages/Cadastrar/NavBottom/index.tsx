@@ -5,12 +5,12 @@ import { Sidebarprops } from '../../../componetes/SideBar';
 import  './styles.css';
 
 
-export const NavBottom: React.FC<Sidebarprops> =({buttonList}:Sidebarprops,...rest)=>  {
+export const NavBottom: React.FC<Sidebarprops> =({buttonList,onClick,...rest}:Sidebarprops,)=>  {
   return (
-    <nav className='button-navigation'>
+    <nav  key="botaoDeNavegaçao"className='button-navigation'>
       {buttonList.map((value)=>{
         return(
-          <NavLink to={value.path}  
+          <NavLink   key={value.nome} onClick={onClick} to={value.path}  
           className={({isActive})=>isActive? 
           `${value.className?value.className+ " ":""}active button-navigation`:
           `${value.className?value.className+ " ":""}button-navigation`} 

@@ -1,18 +1,19 @@
-.formulario {
-
-
-    width: 300px;
-    height: 100%;
-    padding-left: 2%;
-    padding-top: 2%;
+.formulario{
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    overflow:auto;
+}
+
+.cadastro-conteudo {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
 }
 
 
-
+/*botao faz parte do formulario*/
 .btn {
     width: 100px;
     height: 50px;
@@ -32,24 +33,25 @@
 
 
 
-.cadastro-conteudo {
 
-    height: 100%;
+
+
+.condutor-form {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    gap: 10px;
 
 }
 
-
+.condutor-form input {
+    height: 25px;
+    outline: none;
+    border-radius: 5px;
+    border: none;
+    background-color: antiquewhite;
+}
 
 @media(max-width:900px) {
-    .formulario {
-        width: 300px;
-
-    }
-
-
     .btn {
         margin-left: auto;
         margin-right: auto;
