@@ -4,7 +4,7 @@ import GlobalStyles from './styles/GlobalStyles';
 import { Header } from './componetes/Header';
 import SideBar, { IbuttonList } from './componetes/SideBar'
 import Footer from './componetes/footer';
-import Home from './pages/Home/Home';
+
 
 import { useState } from 'react';
 
@@ -18,6 +18,7 @@ export function App() {
   { nome: "Vistorias", className: "botao", path: "vistorias" },
   { nome: "Cadastrar", className: "botao", path: "cadastrar" }];
 
+  //faz o botao aparecer e sumir quando em tela de menor 
   const [display, setDislay] = useState<boolean>(false)
 
   function hiddenMenu() {

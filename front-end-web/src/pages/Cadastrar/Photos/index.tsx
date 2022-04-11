@@ -1,53 +1,137 @@
-import { Scope } from '@unform/core';
-import React, { ChangeEvent, useState } from 'react';
+import { Scope, useField } from '@unform/core';
+import React, { ChangeEvent, cloneElement, useEffect, useRef, useState } from 'react';
 import InputFile from '../../../componetes/InputFile';
 import './styles.css';
-import imagem from '../../../img/adicionar.png'  
-import teste from './teste-photo.png'
+import imagem from '../../../img/adicionar.png'
+
+
 
 
 
 
 const Photos: React.FC = () => {
 
-    const[photoPreview,setPhotoPreview] =useState<string[]>([]);
+    const [photoPreview, setPhotoPreview] = useState<string[]>([]);
+    const [filesImages, setFilesImages] = useState<File[]>([]);
+  
 
-    function changeImg(event :ChangeEvent<HTMLInputElement>){
-        if(!event.target.files){
+
+    const inputRef = useRef<HTMLInputElement>(null);
+    //nome do campo que vai ser capturado deve ser inserido no useField
+    const {fieldName,defaultValue,registerField,error}=useField('photos');
+
+
+    useEffect(()=>{
+      salvarPreview(filesImages)
+      console.log(filesImages)
+    },[filesImages])
+
+    useEffect(()=>{
+        
+        registerField({
+            name:fieldName,
+            ref:inputRef,
+            getValue: ref=>{
+              return ref.current.files;
+            },
+            setValue:(ref,value)=>{
+                ref.current.value = value
+            },
+            clearValue:ref=>{
+                ref.current.value=''
+            },
+
+        })
+       
+    },[fieldName,registerField])
+  
+  
+
+    //funcao captura as imagens e joga num array
+
+    function chooseImg() {
+       const files=inputRef.current?.files;
+      
+        if (files?.length===0) {
             return;
         }
-        //pega as imagens
-        const selectImages = Array.from(event.target.files);
+        if (photoPreview.length >= 6) {
+            return;
 
-        const imagePreview = selectImages.map(image =>{
-            return URL.createObjectURL(image);
+        }
+      
+        const selectImages:File[] = Array.from(files);
+      
+        selectImages.map((item)=>{
+            setFilesImages([...filesImages, item]);
+            
         })
 
-        setPhotoPreview(imagePreview);
+       
+     
+        
+      
     }
 
-    return (
     
-    <div className='photos'>
+    
+  
+    function salvarPreview(files:File[]){
+        const imagePreview = files.map(image =>{
+           
+           return URL.createObjectURL(image);
+         
+            })
+         
+        setPhotoPreview(imagePreview)
 
-        <Scope path='photos'>
-        <div id='conteiner-fotos'>   
-        <section className='card-photos'>
-            
-        {photoPreview.map((image)=>{
-            return(
-            <img key={image} src={image} alt="" />
-            )
-            
-        })}
-        </section>
-       </div>
+    }
+
+
+    function removeImages(e) {
+        var index = photoPreview.findIndex(src => {
+            return src == e.target.src;
+        });
+
+        var novoArray = [];
+
+        filesImages.map((value, i) => {
+            if (i == index) {
+                return;
+            }
+            novoArray.push(value);
+        })
+        setFilesImages(novoArray);
        
+    }
 
-        <InputFile required multiple onChange={changeImg}  imageLabel={imagem} label='Adicionar' name='photos' accept="image/*" />
-        </Scope>
 
-    </div>
+
+
+
+    return (
+
+        <div className='photos'>
+
+            <Scope path='photos'>
+                <div id='conteiner-fotos'>
+                    <section className='card-photos'>
+                           
+                        {
+                         photoPreview.map((image, index) => {
+                            return (
+                                <img onClick={removeImages} key={image} src={image} alt="" />
+                            )
+
+                        })}
+                    </section>
+                </div>
+
+
+                <InputFile required  onChange={chooseImg} imageLabel={imagem} label='Adicionar' ref={inputRef} name='photos' accept="image/*" />
+            </Scope>
+
+        </div>
 
     );
 }

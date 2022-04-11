@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { useField } from '@unform/core';
-import "./styles.css"
+
 
 export interface IOptions {
     id: string | number
@@ -49,7 +49,7 @@ function RadioInput({ name, type, options, className = "radioBox", ...rest }: In
             {options.map((option, index) => {
                 return (
                     <div   key={`${option.label}-${index}-div`} className={className}>
-                        <label   key={`${option.label}-${index}-label`} htmlFor={option.id}>
+                        <label   key={`${option.label}-${index}-label`} >
 
                             <input
                                 required

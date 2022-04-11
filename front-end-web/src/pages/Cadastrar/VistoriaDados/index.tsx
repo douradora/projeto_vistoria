@@ -22,15 +22,17 @@ const situacoes: IOptions[] = [{ id: "bom", },
 const VistoriaDados: React.FC = () => {
   return (
     <section id='conteiner-dados-vistoria'>
-      <div id='cap'>
+      <div className='item'>
         <label >Item</label>
-        <div id="campos">
-          <label htmlFor="">B</label>
-          <label htmlFor="">R</label>
-          <label htmlFor="">Q</label>
-          <label htmlFor="">I</label>
-          <label htmlFor="">A</label>
-          <label htmlFor="">F</label>
+        <div className="option">
+        <ul className='situacao'>B</ul>
+         <ul className='situacao'>R</ul>
+         <ul className='situacao'>Q</ul>
+         <ul className='situacao'>I</ul>
+         <ul className='situacao'>A</ul>
+         <ul className='situacao'>F</ul>
+         
+         
 
         </div>
       </div>

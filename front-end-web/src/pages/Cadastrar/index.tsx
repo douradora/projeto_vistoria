@@ -11,6 +11,9 @@ const Cadastrar: React.FC = () => {
   const formRef = useRef()
   const [dadosForm, setDadosForm] = useState<{}>('');
 
+  useEffect(()=>{
+    console.log(dadosForm)
+  },[dadosForm])
 
 
 
@@ -46,6 +49,7 @@ const Cadastrar: React.FC = () => {
       default:
         setDadosForm({ ...dadosForm });
     }
+ 
 
   }
 
@@ -55,7 +59,7 @@ const Cadastrar: React.FC = () => {
 
       <Form className='formulario' encType='multipart/form-data' id='Forms' ref={formRef} onSubmit={submitForm} >
         
-        <Outlet />
+        <Outlet context={dadosForm}/>
         <Input name='Salvar' className='btn' type='submit' value='Salvar' />
       </Form >
 

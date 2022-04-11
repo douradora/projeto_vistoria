@@ -14,14 +14,14 @@ export  const situacao:IOptions[] = [
                                             
                                                                     ]
 
-
+//tabela da navbar de cadastro
 export const navButton:IbuttonList[]=[
     {nome:"Dados iniciais",path:"dadosVeiculo"},
     {nome:"situacao",path:"infor"},
     {nome:"Observaçoes",path:"obs"},
     {nome:"Dados do Veiculo",path:"dadosVistoria"},
     {nome:"Fotos",path:"fotos"},
-    {nome:"Contutor",path:"condutor"},
+    {nome:"Condutor",path:"condutor"},
 
 
 
