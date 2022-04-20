@@ -1,5 +1,5 @@
 import { Scope, useField } from '@unform/core';
-import React, { ChangeEvent, cloneElement, useEffect, useRef, useState } from 'react';
+import React, { ChangeEvent, cloneElement, MouseEventHandler, useEffect, useRef, useState } from 'react';
 import InputFile from '../../../componetes/InputFile';
 import './styles.css';
 import imagem from '../../../img/adicionar.png'
@@ -23,34 +23,33 @@ const Photos: React.FC = () => {
 
     useEffect(()=>{
       salvarPreview(filesImages)
-      console.log(filesImages)
-    },[filesImages])
+      
+      registerField({
+        name:fieldName,
+        ref:inputRef,
+        getValue: ref=>{
+          return  filesImages;
+        },
+        //implementar aqui  como vai implementado para manter o estado
+        setValue:(ref,value)=>{
+            
+        },
+        clearValue:ref=>{
+          
+        },
 
-    useEffect(()=>{
-        
-        registerField({
-            name:fieldName,
-            ref:inputRef,
-            getValue: ref=>{
-              return ref.current.files;
-            },
-            setValue:(ref,value)=>{
-                ref.current.value = value
-            },
-            clearValue:ref=>{
-                ref.current.value=''
-            },
+    })
+     
+    },[filesImages,fieldName,registerField,inputRef])
 
-        })
-       
-    },[fieldName,registerField])
+ 
   
   
 
     //funcao captura as imagens e joga num array
 
     function chooseImg() {
-       const files=inputRef.current?.files;
+       const files :File[]=inputRef.current?.files;
       
         if (files?.length===0) {
             return;
@@ -88,12 +87,13 @@ const Photos: React.FC = () => {
     }
 
 
-    function removeImages(e) {
+    function removeImages(e:MouseEventHandler<HTMLImageElement>) {
+    
         var index = photoPreview.findIndex(src => {
             return src == e.target.src;
         });
 
-        var novoArray = [];
+        var novoArray:File[] = [];
 
         filesImages.map((value, i) => {
             if (i == index) {
@@ -113,7 +113,7 @@ const Photos: React.FC = () => {
 
         <div className='photos'>
 
-            <Scope path='photos'>
+            <Scope path='Photos'>
                 <div id='conteiner-fotos'>
                     <section className='card-photos'>
                            

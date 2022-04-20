@@ -6,50 +6,52 @@ import { Navigate, Outlet } from 'react-router-dom';
 import { navButton } from './tabelaDados';
 import NavBottom from './NavBottom';
 
+
 const Cadastrar: React.FC = () => {
 
-  const formRef = useRef()
+  const formRef = useRef(null);
   const [dadosForm, setDadosForm] = useState<{}>('');
 
-  useEffect(()=>{
+  useEffect(() => {
     console.log(dadosForm)
-  },[dadosForm])
+  }, [dadosForm])
 
 
-
-  function action() {
-
-
-  }
-
-  //seta dados  
-  function submitForm(data) {
+  /**
+   * @submitForm recebe os dados do formulario e incluir no estado de dadosForm
+   */
+  function submitForm(data): void {
+  
     let dados = Object.keys(data);
-    switch (dados[1]) {
-      case "Cabecalho":
-        setDadosForm({ ...dadosForm, "cabeca": data.Cabecalho })
-        break;
-      case "situacao":
-        setDadosForm({ ...dadosForm, "situcao": data.situacao })
-        break;
-      case "obs":
-        setDadosForm({ ...dadosForm, "obs": data.obs })
-        break
-      case "photos":
-        setDadosForm({ ...dadosForm, "photos": data.photos })
+    dados.map(campo =>{
+      switch (campo) {
+      
+        case "Cabecalho":
+          setDadosForm({ ...dadosForm,"cabeca": data.Cabecalho })
+          break;
+        case "Situacao":
+          setDadosForm({ ...dadosForm,"situcao": data.Situacao })
+          break;
+        case "Obs":
+          setDadosForm({ ...dadosForm,"obs": data.Obs })
+          break;
+        case "photos":
+          setDadosForm({ ...dadosForm,"photos": data.photos })
+          break;
+        case "VistoriaData":
+          setDadosForm({ ...dadosForm,"vistoriaData": data.VistoriaData })
+          break;
+        case "Condutor":
+          setDadosForm({ ...dadosForm,"condutor": data.Condutor })
+          break;
+        default:
+          setDadosForm({ ...dadosForm });
+      }
+  
 
-        break
-      case "vistoriaData":
-        setDadosForm({ ...dadosForm, "vistoriaData": data.vistoriaData })
-
-        break
-      case "Condutor":
-        setDadosForm({ ...dadosForm, "condutor": data.Condutor })
-        break
-      default:
-        setDadosForm({ ...dadosForm });
-    }
- 
+    })
+    
+   
 
   }
 
@@ -58,12 +60,11 @@ const Cadastrar: React.FC = () => {
     <div className='cadastro-conteudo'>
 
       <Form className='formulario' encType='multipart/form-data' id='Forms' ref={formRef} onSubmit={submitForm} >
-        
-        <Outlet context={dadosForm}/>
-        <Input name='Salvar' className='btn' type='submit' value='Salvar' />
+        <Outlet />
+        <Input name='Salvar' className='btn' type='submit'  />
       </Form >
 
-      <NavBottom onClick={action} buttonList={navButton} />
+      <NavBottom  buttonList={navButton} />
 
     </div>
   );

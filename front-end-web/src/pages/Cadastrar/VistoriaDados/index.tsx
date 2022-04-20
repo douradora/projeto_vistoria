@@ -36,7 +36,7 @@ const VistoriaDados: React.FC = () => {
 
         </div>
       </div>
-      <Scope path='vistoriaData'>
+      <Scope path='VistoriaData'>
       {Campos.map((value) => {
         return <div key={`div-${value}`} className='item'>
           <label key={`label-${value}`} htmlFor="">{value}</label>

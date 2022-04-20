@@ -8,7 +8,7 @@ import './styles.css';
 const Obs: React.FC = () => {
   return (
     <section id='conteiner-obs'>
-      <Scope path='obs'> 
+      <Scope path='Obs'> 
        <TextArea rows='10' className='obs' name='observacao' type="textarea" />
        </Scope>
 
