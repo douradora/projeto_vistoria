@@ -31,26 +31,6 @@
 }
 
 
-
-
-
-
-
-.condutor-form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-
-}
-
-.condutor-form input {
-    height: 25px;
-    outline: none;
-    border-radius: 5px;
-    border: none;
-    background-color: antiquewhite;
-}
-
 @media(max-width:900px) {
     .btn {
         margin-left: auto;
