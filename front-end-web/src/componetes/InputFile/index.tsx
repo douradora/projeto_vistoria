@@ -1,5 +1,5 @@
 import { useField } from '@unform/core';
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef,forwardRef } from 'react';
 
 interface Props{
     name:string
@@ -15,36 +15,12 @@ type InputProps = JSX.IntrinsicElements['input'] & Props;
 
 // import { Container } from './styles';
 
-const InputFile:React.FC<InputProps> = ({name,label,imageLabel,...rest}:InputProps) => {
+const InputFile:React.RefForwardingComponent<HTMLInputElement,InputProps> = ({name,label,imageLabel,...rest}:InputProps,ref) => {
 
-    const inputRef = useRef<HTMLInputElement>(null);
-        
-    const {fieldName,defaultValue,registerField,error}=useField(name);
-
-
-    useEffect(()=>{
-
-        registerField({
-            name:fieldName,
-            ref:inputRef,
-            getValue: ref=>{
-              return ref.current.files;
-            },
-            setValue:(ref,value)=>{
-                ref.current.value = value
-            },
-            clearValue:ref=>{
-                ref.current.value=''
-            },
-
-        })
-
-    },[fieldName,registerField])
-  
-  
+   
     return (
         <div>
-        {label && <label htmlFor={fieldName}>
+        {label && <label htmlFor={name}>
         {label} 
         {imageLabel?<img src={imageLabel} alt={imageLabel}/> :''} 
         
@@ -52,10 +28,11 @@ const InputFile:React.FC<InputProps> = ({name,label,imageLabel,...rest}:InputPro
         </label>}
         
 
-        <input id={fieldName}
+        <input id={name}
+        name={name}
         type="file"
-        ref={inputRef}
-        defaultValue={defaultValue}
+        ref={ref}
+        
         {...rest} />
         
         </div>
@@ -63,4 +40,4 @@ const InputFile:React.FC<InputProps> = ({name,label,imageLabel,...rest}:InputPro
   );
 }
 
-export default InputFile;
+export default forwardRef (InputFile);

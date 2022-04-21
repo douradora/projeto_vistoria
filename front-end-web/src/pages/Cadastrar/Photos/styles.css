@@ -3,6 +3,9 @@
     display: flex;
     gap: 10px;
     flex-direction: column;
+    margin-top: 15px;
+    margin-left: 10px;
+    margin-bottom: 10px;
     overflow: auto;
 }
 
@@ -49,6 +52,6 @@
     border: solid  #0000003d;
     border-radius: 10%;
     width: 300px;
-    height: 150px;
-    object-fit: cover;
+    height: 200px;
+    object-fit: fill;
 }

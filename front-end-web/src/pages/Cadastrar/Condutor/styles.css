@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .conteiner-condutor {
     display: flex;
     flex-direction: column;
@@ -13,4 +14,13 @@
     border-radius: 5px;
     border: none;
     background-color: antiquewhite;
+=======
+.condutor-form{
+    width: 400px;
+    margin-top: 15px;
+    margin-left: 40px;
+
+
+
+>>>>>>> 801500db328806bd68e6e23d973dcf82e0585b34
 }
