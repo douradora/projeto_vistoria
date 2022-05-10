@@ -1,6 +1,6 @@
 import { Client } from "../../Prisma/prismaClient";
 export interface Iopm{
-    nomeOpm,
+    nome_opm,
     comando
 
 
@@ -10,16 +10,16 @@ export interface Iopm{
 
 
 export class    createOpmServices{
-    async execute({nomeOpm,comando}:Iopm) {
-        const findOpm  =await Client.opm.findFirst({where:{NomeOpm:nomeOpm}});
+    async execute({nome_opm,comando}:Iopm) {
+        const findOpm  =await Client.opm.findFirst({where:{nome_opm:nome_opm}});
 
 
         if(findOpm){
             return findOpm;
         }else{
         const opm = await Client.opm.create({data:{
-            NomeOpm:nomeOpm,
-            ComandoOpm:comando
+            nome_opm,
+           comando_opm:comando
         }}
               
         );

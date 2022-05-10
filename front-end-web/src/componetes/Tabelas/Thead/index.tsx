@@ -9,9 +9,9 @@ type Threadprops ={
 
 const Thead: React.FC<Threadprops> = ({dados,...rest}:Threadprops) => {
   return (
-    <thead>
-      {dados.map((value)=>{
-          return <th>{value}</th>
+    <thead {...rest}>
+      {dados.map((value,index)=>{
+          return <th key={index}>{value}</th>
 
 
 

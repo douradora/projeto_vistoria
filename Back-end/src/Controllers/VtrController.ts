@@ -1,7 +1,7 @@
 import { Ivtr, CreateVtrService } from "../services/veiculosServices/CreateVtrService"
 import { Request, Response } from "express";
 import { FindVtrService } from "../services/veiculosServices/FindVtrService";
-import { idText } from "typescript";
+
 
 
 
@@ -15,14 +15,21 @@ export class vtrController {
          */
        
         async create(req: Request, res: Response) {
-                const { locadoraId, modeloId, OPMID, placa, prefixo, combustivel, quilometragem } = req.body;
+                const { locadora_id, 
+                        modelo_id, 
+                        opm_id, 
+                        placa, prefixo} = req.body;
 
-                if (!locadoraId || !modeloId || !OPMID || !placa || !prefixo || !combustivel || !quilometragem){
-                        throw new Error("dados Imcompletos para cadastro de Veiculo")
+                if (!locadora_id ||
+                    !modelo_id   ||
+                    !opm_id      ||
+                    !placa       ||
+                    !prefixo ){
+                throw new Error("dados Imcompletos para cadastro de Veiculo")
                 }
 
                 const createVtr = new CreateVtrService();
-                const veiculo = await createVtr.execute({ locadoraId, modeloId, OPMID, placa, prefixo, combustivel, quilometragem })
+                const veiculo = await createVtr.execute({ locadora_id, modelo_id, opm_id, placa, prefixo})
                 return res.status(201).send(veiculo)
 
 
@@ -40,6 +47,7 @@ export class vtrController {
                 const findVtr = new FindVtrService();
 
                 const Vtr = await findVtr.execute(vtr)
+
 
                 if(!Vtr){
                         throw new Error("nao foi encontrado nenhuma Vtr com esse paramentro");

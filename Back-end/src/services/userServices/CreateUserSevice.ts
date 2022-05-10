@@ -8,7 +8,7 @@ export class createUserService {
  * @param adm nao é obrigatorio 
  * @returns retorna o usuario salvo  caso sucesso
  */
-    async execute({ cpf_user, name, email, password,adm}: IUSerRequest) {
+    async execute({ cpf_user, name, email, password,is_adm}: IUSerRequest) {
 
         const findCpfExists = await Client.user.findFirst({where:{cpf_user:cpf_user}});
 
@@ -27,7 +27,7 @@ export class createUserService {
             name,
             email,
             password: pW,
-            adm,
+            is_adm,
             
             }
         });

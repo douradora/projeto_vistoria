@@ -4,11 +4,9 @@ import { Client } from "../../Prisma/prismaClient";
 export interface Ivtr {
     placa: string
     prefixo: string
-    quilometragem: number
-    combustivel: number
-    modeloId: number
-    OPMID: number
-    locadoraId: number
+    modelo_id: number
+    opm_id: number
+    locadora_id: number
 
 
 }
@@ -20,7 +18,7 @@ export class CreateVtrService {
      * @returns 
      */
     
-    async execute({ placa, prefixo, quilometragem, combustivel, modeloId, OPMID, locadoraId }: Ivtr) {
+    async execute({ placa, prefixo, modelo_id, opm_id, locadora_id }: Ivtr) {
 
        
        
@@ -30,8 +28,11 @@ export class CreateVtrService {
 
 
         if (FindVtr) {
-            return FindVtr;
+        
+            
+         return FindVtr;
         } else {
+            //caso nao exista a placa da vtr e tente cadastra com um prefixo ja existente
             const FindPrefixo = await Client.veiculo.findFirst({ where: { prefixo: prefixo } });
            
             if (FindPrefixo) {
@@ -39,21 +40,16 @@ export class CreateVtrService {
             }
             
 
-            const Vtr = await Client.veiculo.create({
-                data: {
-                    placa,
-                     combustivel,
-                     prefixo,
-                     quilometragem,
-                     OPMID,
-                     locadoraId,
-                     modeloId
-                }
+            const vtr = await Client.veiculo.create({data:{
+                placa,
+                prefixo,
+                opm_id,
+                locadora_id,
+                modelo_id
 
+            }})
 
-            })
-
-            return Vtr;
+            return vtr;
 
 
 

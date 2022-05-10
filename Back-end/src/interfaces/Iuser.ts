@@ -3,7 +3,7 @@ export interface IUSerRequest{
     name:string,
     password:string,
     email:string,
-    adm:boolean
+    is_adm:boolean
 
 
 

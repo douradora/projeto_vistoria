@@ -61,7 +61,7 @@ function RadioInput({ name, type, options, className = "radioBox", ...rest }: In
                                 value={option.id}
                                 
                                 defaultChecked={defaultValue === option.id} />
-                                {option.label}
+                                <span>{option.label}</span>
                         </label>
                     </div>
 

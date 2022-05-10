@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import Main from '../../componetes/Main';
 import api from '../../api/api';
 import Table from '../../componetes/Tabelas/table';
 import Thead from '../../componetes/Tabelas/Thead';
@@ -16,12 +15,12 @@ function Vistoria() {
    
    
     //cabeçalho da tabela
-    const cabeca = ['placa-veiculo', 'vistoriador', 'situcao', 'data']
+    const cabeca = ['Placa-Veiculo', 'Vistoriador', 'Situcao', 'Data','Hora']
 
     // requisiçao de vistorias ao servidor  
     useEffect(() => {
         api.get('/listVistorias').then((response) => {
-            setVistorias(response.data)
+            setVistorias(response.data.listando)
         }).catch((reason) => {
             seterrorConnection(true);
 
@@ -45,7 +44,12 @@ function Vistoria() {
                     <Thead dados={cabeca} />
                     {vistorias.map((value, index) => {
                         const { veiculoPlaca, id_user, situacao, created_at } = value;
-                        return <Tbody key={index} dados={[veiculoPlaca, id_user, situacao, created_at]}></Tbody>
+                        
+                        const splitData = created_at.split('T');
+                        const data = splitData[0].split("-");
+                        const hora = splitData[1].split('+')[0]
+                       
+                        return <Tbody key={created_at} dados={[veiculoPlaca, id_user, situacao, `${data[2]}/${data[1]}/${data[0]}`,hora]}></Tbody>
 
                     })}
 

@@ -16,12 +16,12 @@ export default class CreatePhotoService {
   async execute({ id, url }: IPhotos) {
 
 
-    const urlPhotos = url.toString();
+    const url_photos = url.toString();
 
     const CreatePhotos = await Client.photos.create({
       data: {
-        idPhotos: id,
-        urlPhotos,
+        id_photos: id,
+        url_photos,
       }
     })
     return CreatePhotos;

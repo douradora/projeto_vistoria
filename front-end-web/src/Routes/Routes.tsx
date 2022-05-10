@@ -2,14 +2,14 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import {App} from '../App';
 import Cadastrar from '../pages/Cadastrar';
-import Cabecalho from '../pages/Cadastrar/Cabecalho';
-import Infors from '../pages/Cadastrar/infors';
-import Obs from '../pages/Cadastrar/Obs';
+import Cabecalho from '../pages/Cadastrar/pages/Cabecalho';
+import Infors from '../pages/Cadastrar/pages/situacoes';
+import Obs from '../pages/Cadastrar/pages/Obs';
 import Home from '../pages/Home/Home';
 import Vistoria from '../pages/Vistoria/Vistoria';
-import VistoriaDados from '../pages/Cadastrar/VistoriaDados';
-import Photos from '../pages/Cadastrar/Photos';
-import Condutor from '../pages/Cadastrar/Condutor';
+import VistoriaDados from '../pages/Cadastrar/pages/VistoriaDados';
+import Photos from '../pages/Cadastrar/pages/Photos';
+import Condutor from '../pages/Cadastrar/pages/Condutor';
 
 // import { Container } from './styles';
 

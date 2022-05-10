@@ -2,16 +2,19 @@ import { createGlobalStyle } from "styled-components";
 
 
 export default createGlobalStyle`
+    
+
+
  #root {
     height: 100vh;
-    font-size: 100%;
+ 
     background-color: #ffffe6;
     display: grid;
     grid-template-columns: max-content;
     grid-template-rows: 10vh 85vh 5vh;
     gap: 6px;
     grid-template-areas: "h h"
-                         "S M"
+                         "M M"
                           "F F";
 
     }    
@@ -54,6 +57,7 @@ export default createGlobalStyle`
         box-sizing: border-box;
         text-decoration: none;
         font-family:'Poppins', sans-serif;
+        font-size: 16px;
     }
 
    

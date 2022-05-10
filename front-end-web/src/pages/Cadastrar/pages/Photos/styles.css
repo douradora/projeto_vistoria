@@ -1,0 +1,68 @@
+.photos {
+    height: 50vh;
+    align-items: center;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    margin-top: 15px;
+    margin-left: 10px;
+    margin-bottom: 40px;
+    overflow: auto;
+
+}
+
+.photos .adicionar label {
+    width: 60px;
+    height: 60px;
+    font: 0.7em sans-serif;
+    display: flex;
+    flex-direction: column-reverse;
+    
+}
+.photos .adicionar label span{
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.photos .button-adicionar {
+    height: 100%;
+    width: 100%;
+    margin-top: 10px;
+    background: #47444410;
+    border-radius: 50%;
+    
+
+}
+
+.photos .button-adicionar:hover{
+    background: #413e3ec2;
+}
+.photos input {
+    display: none;
+}
+
+.photos .card-photos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3px;
+
+
+}
+
+.photos .card-photos img {
+    border: solid #0000003d;
+    border-radius: 10%;
+    width: 300px;
+    height: 200px;
+    object-fit: fill;
+   
+}
+
+.photos .card-photos img:hover{
+    cursor: pointer;
+    opacity: 0.7;
+    
+}

@@ -1,14 +1,61 @@
-.tabela{
+.tabela {
     margin: 10px;
 }
 
-.errorAdvice{
+.errorAdvice {
     text-align: center;
-    background-color:bisque;
+    background-color: bisque;
 
 }
 
-@media(max-width:900px){
 
 
+.tabela {
+    width: 100%;
+   margin-left: 40px;
+   margin-top:40px;
+
+}
+
+
+table {
+
+    border-collapse: collapse;
+
+}
+
+th, td {
+    border: 1px solid #8d9aad;
+    text-align: center;
+    padding: 8px;
+
+}
+
+td:hover {
+    background: #7d8085;
+    cursor: context-menu;
+
+}
+
+tbody:nth-child(even) {
+    background-color: rgba(217, 217, 217, 4);
+
+
+
+}
+
+@media(max-width:900px) {
+    .tabela {
+        margin: 10px;
+
+    }
+
+    th, td {
+        border: 1px solid #8d9aad;
+        text-align: center;
+        padding: 2px;
+
+
+
+    }
 }

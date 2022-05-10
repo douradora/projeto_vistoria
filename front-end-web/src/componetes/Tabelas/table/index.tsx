@@ -9,12 +9,11 @@ interface TableProps{
 
 const Table: React.FC<TableProps> = (props,{nome,...rest}:TableProps) => {
 
-    const Dados =["ramon","dourado","barbosa"]
 
 
 
 
-  return (
+  return(
   <table id={nome}  {...rest}>
       
         {props.children}
@@ -24,6 +23,8 @@ const Table: React.FC<TableProps> = (props,{nome,...rest}:TableProps) => {
      
   </table>
   
-  )}
+  )
+
+}
 
 export default Table;

@@ -23,7 +23,10 @@ export class listVistoriaService{
      * @returns todas as vistorias salvas em banco
      */    
    async listEvery(){
-        const listEveryVistorias = await Client.vistoria.findMany();
+        const listEveryVistorias = await Client.$queryRaw`
+          SELECT * From Vistoria INNER JOIN photos  on Vistoria.id_photos_fk = photos.id_photos
+        
+        `;
         
         return listEveryVistorias;
 

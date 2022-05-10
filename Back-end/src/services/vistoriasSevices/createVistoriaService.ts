@@ -3,13 +3,17 @@ import { Client } from "../../Prisma/prismaClient";
 import { v4 as uuidV4} from "uuid";
 
 export interface Ivistoria{
-    veiculoPlaca:string
+    veiculo_placa:string
+    veiculo_combustivel
+    veiculo_quilometragem
     id_user:string
-    condutorCpf:string
-    nome_condutor:string
+    condutor_cpf:string
+    condutor_nome:string
     obs:string
-    destinoId:string
+    destino_id:string
     situacao:string
+    id_photos_fk:string
+    
        
 }
 /**
@@ -20,19 +24,22 @@ export interface Ivistoria{
  */
 export class createVistoriaService{
 
-        async execute({veiculoPlaca,id_user,condutorCpf,nome_condutor,obs,destinoId,situacao}:Ivistoria,{dadosVistoria,tipoVeiculo}:ImodeloVistoria){
+        async execute({veiculo_placa,veiculo_combustivel,veiculo_quilometragem, id_user,condutor_cpf,condutor_nome,obs,destino_id,situacao,id_photos_fk}:Ivistoria,{dados_vistoria,tipo_veiculo}:ImodeloVistoria){
             const Vistoria = Client.vistoria.create(
                 {data:{
-                    idVistoria:uuidV4(),
-                    veiculoPlaca,
-                    dados_vistoria:dadosVistoria,
+                    id_vistoria:uuidV4(),
+                    veiculo_placa,
+                    veiculo_combustivel,
+                    veiculo_quilometragem,
+                    dados_vistoria,
                     id_user,
-                    condutorCpf,
-                    nome_condutor,
+                    condutor_cpf,
+                    condutor_nome,
                     obs,
-                    destinoId,
+                    destino_id,
                     situacao,
-                    tipo_veiculo:tipoVeiculo,
+                    tipo_veiculo,
+                    id_photos_fk
                     }
                 
             })

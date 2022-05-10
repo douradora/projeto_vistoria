@@ -25,7 +25,7 @@ export class loginController {
 
 
             const user = await login.execute({cpf_user:cpf,password:password})
-            const token = sign({},authconfig.secret,{subject:user.cpf_user, expiresIn:"20s"});
+            const token = sign({},authconfig.secret,{subject:user.cpf_user, expiresIn:"600s"});
 
 
             res.status(200).send({

@@ -6,9 +6,9 @@ import { Client } from "../../Prisma/prismaClient";
 
 
 export class createLocadoraservice{
-        async execute(NomeLocadora){
+        async execute(nome_locadora){
 
-            const findLocadora = await Client.locadora.findFirst({where:{NomeLocadora}});
+            const findLocadora = await Client.locadora.findFirst({where:{nome_locadora}});
 
 
             if(findLocadora){
@@ -18,7 +18,7 @@ export class createLocadoraservice{
 
                 const createLocadora = await Client.locadora.create({
                     data:{
-                        NomeLocadora
+                        nome_locadora
                     }
                 })
 

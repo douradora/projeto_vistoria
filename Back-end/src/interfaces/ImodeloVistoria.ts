@@ -2,8 +2,8 @@
 
 
 export interface ImodeloVistoria{
-    tipoVeiculo: string        
-    dadosVistoria:{}
+    tipo_veiculo: string        
+    dados_vistoria:{}
 
 
 

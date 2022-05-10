@@ -27,6 +27,7 @@
 .btn:hover {
     background-color: rgb(13, 13, 102);
     transition: 0.2s;
+    cursor: pointer;
 
 }
 
@@ -43,4 +44,6 @@
     .formulario {
         overflow-y: scroll;
     }
+
+
 }

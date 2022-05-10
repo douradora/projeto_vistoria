@@ -5,14 +5,14 @@ import {listOpmService} from "../services/OpmSevices/listOpmService"
 export class opmController{
            
           async create(req:Request,res:Response){
-                const {nomeOpm,comando} = req.body;
+                const {nome_opm,comando} = req.body;
 
-                if(!nomeOpm||!comando){
+                if(!nome_opm||!comando){
                     throw new Error("sem dados suficientes");
             }
         
                 const opmCreate = new createOpmServices();
-                 const opm = await opmCreate.execute({nomeOpm,comando});
+                 const opm = await opmCreate.execute({nome_opm,comando});
 
 
                  res.status(200).send(opm)
