@@ -11,7 +11,7 @@ const Campos = ['Friso lateral', "Espelhos lateral", "Extitor", "Xadrez", "Trian
 ];
 
 //situaçoes em que se econtra os intem
-const situacoes: IOptions[] = [{ id: "bom", },
+const situacoes: IOptions[] = [{ id: "bom"},
 { id: "regular" },
 { id: "quebrado" },
 { id: "imprestavel" },

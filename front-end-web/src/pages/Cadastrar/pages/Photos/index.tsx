@@ -3,6 +3,7 @@ import React, { ChangeEvent, cloneElement, MouseEventHandler, useEffect, useRef,
 import InputFile from '../../../../componetes/InputFile';
 import './styles.css';
 import {AddCircleOutline} from 'react-ionicons';
+import { useOutletContext } from 'react-router-dom';
 
 
 
@@ -10,75 +11,32 @@ import {AddCircleOutline} from 'react-ionicons';
 
 
 const Photos: React.FC = () => {
-    const Icon =<AddCircleOutline
+    
+    //compartilhando imagens no contexto global
+    const [dadosForm, setDadosForm] = useOutletContext()
+    
+    
+    const Icon =(<AddCircleOutline
                     color={'#00000'}
                     cssClasses={'button-adicionar'}
-
-                    
-                />;
-
-
+                />);
 
     const [photoPreview, setPhotoPreview] = useState<string[]>([]);
-    const [filesImages, setFilesImages] = useState<File[]>([]);
   
+    const photoRef = useRef(null)
 
 
-    const inputRef = useRef<HTMLInputElement>(null);
-    //nome do campo que vai ser capturado deve ser inserido no useField
-    const {fieldName,defaultValue,registerField,error}=useField('photos');
-
-
-    useEffect(()=>{
-      salvarPreview(filesImages)
-      
-      registerField({
-        name:fieldName,
-        ref:inputRef,
-        getValue: ref=>{
-          return  filesImages;
-        },
-        //implementar aqui  como vai implementado para manter o estado
-        setValue:(ref,value)=>{
-            
-        },
-        clearValue:ref=>{
-          
-        },
-
-    })
-     
-    },[filesImages,fieldName,registerField,inputRef])
-
- 
-  
-  
-
-    //funcao captura as imagens e joga num array
-
-    function chooseImg() {
-       const files :File[]=inputRef.current?.files;
-      
-        if (files?.length===0) {
-            return;
-        }
-        if (photoPreview.length >= 6) {
-            return;
-
-        }
-      
-        const selectImages:File[] = Array.from(files);
-      
-        selectImages.map((item)=>{
-            setFilesImages([...filesImages, item]);
-            
-        })
-
-       
-     
-        
-      
+  useEffect(()=>{
+    const {photos} =dadosForm;
+    
+    if(photos){
+        salvarPreview(photos);
     }
+    
+
+  },[dadosForm,photoRef])
+
+
 
     
     
@@ -95,23 +53,23 @@ const Photos: React.FC = () => {
     }
 
 
-    function removeImages(e:MouseEventHandler<HTMLImageElement>) {
+    // function removeImages(e:MouseEventHandler<HTMLImageElement>) {
     
-        var index = photoPreview.findIndex(src => {
-            return src == e.target.src;
-        });
+    //     var index = photoPreview.findIndex(src => {
+    //         return src == e.target.src;
+    //     });
 
-        var novoArray:File[] = [];
+    //     var novoArray:File[] = [];
 
-        filesImages.map((value, i) => {
-            if (i == index) {
-                return;
-            }
-            novoArray.push(value);
-        })
-        setFilesImages(novoArray);
+    //     filesImages.map((value, i) => {
+    //         if (i == index) {
+    //             return;
+    //         }
+    //         novoArray.push(value);
+    //     })
+    //     setFilesImages(novoArray);
        
-    }
+    // }
 
    
 
@@ -121,22 +79,19 @@ const Photos: React.FC = () => {
 
         <div className='photos'>
 
-            <Scope path='Photos'>
+            <Scope  path='photos'>
                 <div id='conteiner-fotos'>
                     <section className='card-photos'>
-                           
-                        {
-                         photoPreview.map((image, index) => {
-                            return (
-                                <img onClick={removeImages} key={image} src={image} alt="" />
-                            )
-
-                        })}
+                      {photoPreview.map((img)=>{
+                        return   <img src={img} alt="" />
+                          
+                      })}       
+                     
                     </section>
                 </div>
 
 
-                <InputFile required   className='adicionar' onChange={chooseImg} iconName={Icon} label=' ' ref={inputRef} name='photos' accept="image/*" />
+                <InputFile required   multiple className='adicionar'  iconName={Icon} label=' ' name='photos' accept="image/*" />
             </Scope>
 
         </div>

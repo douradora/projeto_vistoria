@@ -6,10 +6,11 @@ import Cabecalho from '../pages/Cadastrar/pages/Cabecalho';
 import Infors from '../pages/Cadastrar/pages/situacoes';
 import Obs from '../pages/Cadastrar/pages/Obs';
 import Home from '../pages/Home/Home';
-import Vistoria from '../pages/Vistoria/Vistoria';
+import Vistoria from '../pages/Listar_vistorias/Listar_vistorias';
 import VistoriaDados from '../pages/Cadastrar/pages/VistoriaDados';
 import Photos from '../pages/Cadastrar/pages/Photos';
 import Condutor from '../pages/Cadastrar/pages/Condutor';
+import Envio from '../pages/Cadastrar/pages/Envio';
 
 // import { Container } from './styles';
 
@@ -28,6 +29,7 @@ export const AppRoutes: React.FC = () => {
                         <Route path='dadosVistoria'  element={<VistoriaDados/>}/>
                         <Route path='fotos'  element={<Photos/>}/>
                         <Route path='condutor'  element={<Condutor/>}/>
+                        <Route path='envio'  element={<Envio/>}/>
 
 
                         </Route>

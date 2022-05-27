@@ -23,12 +23,12 @@ function RadioInput({ name, type, options, className = "radioBox", ...rest }: In
     const inputRef = useRef<HTMLInputElement[]>([]);
 
     const { fieldName, defaultValue, registerField, error } = useField(name);
-
-
     useEffect(() => {
+      //  @ts-ignore 
         registerField({
             name: fieldName,
             ref: inputRef.current,
+            path:'value',
             getValue(refs) {
                 const checked = refs.find(ref => ref.checked);
 
@@ -41,7 +41,7 @@ function RadioInput({ name, type, options, className = "radioBox", ...rest }: In
                     item.checked = true;
                 }
             }
-        });
+        })
     }, [fieldName, registerField]);
 
     return (

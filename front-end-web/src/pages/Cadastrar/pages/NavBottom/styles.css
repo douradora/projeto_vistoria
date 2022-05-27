@@ -1,3 +1,12 @@
+:root{
+    --primary-key-bar: #89a8d6;
+    --selected-key:#193b6e;
+    --active-key:#196e3c;
+
+}
+
+
+
 .button-navigation {
     margin-left: 3px;
     display: flex;
@@ -12,7 +21,7 @@
     width: 150px;
     text-align: center;
     padding: 5px;
-    background-color: #89a8d6;
+    background-color:var(--primary-key-bar);
     border-radius: 5px 20px 0 0;
     font-size: 0.9rem;
     top: 20px;
@@ -22,14 +31,22 @@
 }
 
 .button-navigation a:hover {
-    background-color: #193b6e;
+    background-color: var(--selected-key);
     transform: translateY(-10px);
     transition: 400ms;
 }
 
 
+.barra{
+    
+    display: flex;
+    
+    width: 100%;
+
+    
+}
 a.active {
-    background-color: #196e3c;
+    background-color: var(--active-key);
     transform: translateY(-10px);
 }
 

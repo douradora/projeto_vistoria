@@ -38,8 +38,7 @@ export class vistoriaController {
                         destino_id,
                         situacao,
                         tipo_veiculo } = req.body;
-                console.log(req.body);
-
+             
                   if (!veiculo_placa ||
                         !dados_vistoria||
                         !veiculo_combustivel||

@@ -3,14 +3,14 @@ import { IbuttonList } from "./general/SideBar"
 
     //opçoes de  sinistros
 export const situacao: IOptions[] = [
-    { id: 1, label: "Avaria" },
-    { id: 2, label: "Sinistro" },
-    { id: 3, label: "recebimento-nova" },
-    { id: 4, label: "recebimento-usada" },
-    { id: 5, label: "Entrega-nova" },
-    { id: 6, label: "Entrega-usada" },
-    { id: 7, label: "Devoluçao(mais de 2 anos)" },
-    { id: 8, label: "Emprestada" },
+    { id: "avaria", label: "Avaria" },
+    { id:"sinistro" , label: "Sinistro" },
+    { id: "recebimento-nova", label: "recebimento-nova" },
+    { id: "recebimento-usada", label: "recebimento-usada" },
+    { id: "entrega-nova", label: "Entrega-nova" },
+    { id: "entrega-usada", label: "Entrega-usada" },
+    { id: "devoluçao(mais de 2 anos)", label: "Devoluçao(mais de 2 anos)" },
+    { id: "emprestada", label: "Emprestada" },
 
 ]
 
@@ -22,6 +22,7 @@ export const navButton: IbuttonList[] = [
     { nome: "Dados do Veiculo", path: "dadosVistoria" },
     { nome: "Fotos", path: "fotos" },
     { nome: "Condutor", path: "condutor" },
+    {nome:"Envio",path:"envio"}
 
 
 

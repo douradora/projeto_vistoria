@@ -9,8 +9,8 @@ import './styles.css';
 const Infors: React.FC = () => {
   return (
     <section key="infors-sections" id='conteiner-info' className='infors'>
-        <Scope path='Situacao'>
-        <RadioInput   name='situacao' options={situacao}/>
+        <Scope path='situacao'>
+        <RadioInput key="situacao"  name='situacao' options={situacao}/>
         </Scope>
     </section>
 
