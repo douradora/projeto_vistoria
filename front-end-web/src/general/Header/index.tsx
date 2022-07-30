@@ -2,7 +2,7 @@ import { MouseEventHandler, useEffect, useState } from 'react';
 import menu from '../../img/menu.png';
 import user_icon from '../../img/user_icon.png';
 import { buttonSidebar } from '../../tabelaDados';
-import SideBar from '../SideBar';
+import MenuHeader from '../menu-header';
 import "./styles.css"
 
 export type headerProps={
@@ -24,9 +24,9 @@ export const Header: React.FC<headerProps> = (props:headerProps)=>{
     return(
         <header   className="header">
         <div id="menu-icon" className="menu">
-
-            <div className='icon'><img src={menu} alt=""/></div>
-            <SideBar buttonList={buttonSidebar} ></SideBar>
+             <input type="checkbox" name="" id="icon-checked" />
+            <label className='icon' for='icon-checked'><img src={menu} alt=""/></label>
+            <MenuHeader buttonList={buttonSidebar} />
 
         </div>
         <div className="user-info">

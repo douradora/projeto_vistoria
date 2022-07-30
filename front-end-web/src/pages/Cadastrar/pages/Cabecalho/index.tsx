@@ -45,17 +45,17 @@ const Cabecalho: React.FC = () => {
 
     <section id='conteiner-cabecalho'>
       <Scope path='Cabecalho'  >
-        <Select key='Opm'   className='field-cap' name='OPM' label='Opm' options={opm} />
+        <Select key='Opm'   name='OPM' label='Opm' options={opm} />
 
 
-        <Select key='locadora' className='field-cap' name="locadora" label='locadora' options={locadora} />
+        <Select key='locadora' name="locadora" label='locadora' options={locadora} />
 
-        <Input key='data' className='field-cap' name='data' type="date" label="data" />
-        <Input key={'marca'} className='field-cap' name='montadora' label="Marca" />
-        <Input key={"modelo"} className='field-cap' name='modelo' label="Modelo" />
-        <Input key={"placa"} className='field-cap' name='placa' label="Placa" />
-        <Input key={"combustivel"} className='field-cap' name='cobustivel' label="Combustivel" type='range' />
-        <Input key={"quilometragem"} className='field-cap' name='quilometragem' type="number" min="0" label="KM" />
+        <Input key='data' name='data' type="date" label="data" />
+        <Input key={'marca'} name='montadora' label="Marca" />
+        <Input key={"modelo"} name='modelo' label="Modelo" />
+        <Input key={"placa"} name='placa' label="Placa" />
+        <Input key={"combustivel"} name='cobustivel' label="Combustivel" type='range' />
+        <Input key={"quilometragem"} name='quilometragem' type="number" min="0" label="KM" />
 
       </Scope>
     </section>

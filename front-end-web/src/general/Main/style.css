@@ -1,0 +1,15 @@
+.conteudo{
+    width: auto;
+    margin: auto;
+  
+    border-bottom: #a19f9f 0.1mm solid;
+    background-color: #f4f4f4;
+    height: 90vh;
+
+
+}
+
+@media (max-width:900px) {
+    .conteudo{}
+
+}

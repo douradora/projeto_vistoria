@@ -1,22 +1,30 @@
 .photos {
-    height: 50vh;
+    margin-top: 15px;
+    margin-left: 10px;
+    height: 80vh;
     align-items: center;
     display: flex;
     gap: 10px;
     flex-direction: column;
-    margin-top: 15px;
-    margin-left: 10px;
-    margin-bottom: 40px;
-    overflow: auto;
+   
+   
 
+}
+#conteiner-fotos{
+
+   
+    margin-bottom: 5px;
+    height: 70vh;
+    overflow:auto;
 }
 
 .photos .adicionar label {
-    width: 60px;
-    height: 60px;
+    width: 100px;
+    height: 100px;
     font: 0.7em sans-serif;
     display: flex;
     flex-direction: column-reverse;
+    margin-bottom: 2px;
     
 }
 .photos .adicionar label span{
@@ -26,19 +34,28 @@
     justify-content: center;
     
 }
-
-.photos .button-adicionar {
+.photos .button-adicionar{
+    width: 60px;
+    height: 60px;
+    padding: 2px;
+   
+}
+ #photos {
+    position: relative;
     height: 100%;
     width: 100%;
-    margin-top: 10px;
+    top:0px;
     background: #47444410;
-    border-radius: 50%;
+    
     
 
 }
 
 .photos .button-adicionar:hover{
-    background: #413e3ec2;
+    border-radius: 2px;
+    background: #7e7a7a5e;
+    cursor: pointer;
+    color: black;
 }
 .photos input {
     display: none;
@@ -53,8 +70,8 @@
 }
 
 .photos .card-photos img {
-    border: solid #0000003d;
-    border-radius: 10%;
+ 
+    border-radius: 5%;
     width: 300px;
     height: 200px;
     object-fit: fill;
@@ -62,7 +79,9 @@
 }
 
 .photos .card-photos img:hover{
+    border: solid  1px #797878bb;
+    zoom: 104%;
     cursor: pointer;
-    opacity: 0.7;
+    opacity: 0.8;
     
 }

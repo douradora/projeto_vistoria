@@ -1,13 +1,14 @@
 :root{
-    --primary-key-bar: #89a8d6;
-    --selected-key:#193b6e;
-    --active-key:#196e3c;
+    --primary-key-bar: #b8bfcab6;
+    --selected-key:#b6cbeca4;
+    --active-key:#b6cec0a6;
 
 }
 
 
 
 .button-navigation {
+
     margin-left: 3px;
     display: flex;
     gap: 10px;
@@ -16,13 +17,13 @@
 
 .button-navigation a {
     color: black;
-    position: relative;
-    height: 50px;
+  
+    height: 30px;
     width: 150px;
-    text-align: center;
+    justify-content: center;
+    align-items: center;
     padding: 5px;
     background-color:var(--primary-key-bar);
-    border-radius: 5px 20px 0 0;
     font-size: 0.9rem;
     top: 20px;
 
@@ -32,22 +33,19 @@
 
 .button-navigation a:hover {
     background-color: var(--selected-key);
-    transform: translateY(-10px);
+ 
     transition: 400ms;
 }
 
 
 .barra{
-    
     display: flex;
-    
     width: 100%;
-
-    
+  
 }
-a.active {
+.button-navigation .active {
     background-color: var(--active-key);
-    transform: translateY(-10px);
+   
 }
 
 @media (max-width:900px){

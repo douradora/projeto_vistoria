@@ -1,18 +1,22 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { AtCircle, Contract, Key } from 'react-ionicons';
 import { useOutletContext } from 'react-router-dom';
+import Condutor from '../Condutor';
 
 
 
 
 
 const Envio: React.FC = () => {
-    const [dadosForm, setDadosForm] = useOutletContext();
+  const [dadosForm]= useOutletContext();
 
+  function submitevent(){
+    console.log(dadosForm)
+  }
 
-  return ( dadosForm&&<div>
-        <p>{dadosForm.Condutor.Nome_condutor}</p>
-
-       </div> );
+  return (  <button className='btn' onClick={submitevent}  name="enviar" >Salvar</button>)
+    
+   
 }
 
 export default Envio;

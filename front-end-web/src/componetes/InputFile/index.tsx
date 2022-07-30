@@ -51,7 +51,7 @@ const InputFile: React.ForwardRefRenderFunction<HTMLInputElement, InputProps> = 
         <div className={className}>
             {label && <label htmlFor={name}>
                 {label}
-                {iconName ? iconName : ''}
+               
                 
 
             </label>}

@@ -9,7 +9,7 @@ const Obs: React.FC = () => {
   return (
     <section id='conteiner-obs'>
       <Scope path='Obs'> 
-       <TextArea rows={10} className='obs' name='observacao' />
+       <TextArea rows={10}  name='observacao' />
        </Scope>
 
     </section>

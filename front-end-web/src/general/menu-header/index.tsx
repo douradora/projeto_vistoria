@@ -10,12 +10,9 @@ export interface IbuttonList {
 
 }
 
-export interface Sidebarprops {
-  onClick?:MouseEventHandler
-  buttonList: IbuttonList[]
-}
 
-const SideBar: React.FC<Sidebarprops> = ({buttonList}: Sidebarprops, ) => {
+
+const MenuHeader: React.FC<Sidebarprops> = ({buttonList}: Sidebarprops, ) => {
 
 
   
@@ -40,4 +37,4 @@ const SideBar: React.FC<Sidebarprops> = ({buttonList}: Sidebarprops, ) => {
   );
 }
 
-export default SideBar;
+export default MenuHeader;

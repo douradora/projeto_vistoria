@@ -14,37 +14,19 @@ const Cadastrar: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
   const inputRef = useRef<HTMLInputElement>();
   const [dadosForm, setDadosForm] = useState<{}>('');
-  const [images, setImages] = useState<File[]>([])
-
-
-  useEffect(() => {
-  
-
-  }, [dadosForm, images])
 
 
 
+  useEffect(()=>{
+    console.log(dadosForm)
+  },[dadosForm])
 
   function submitFunc() {
     formRef.current?.submitForm()
   }
 
 
-  function manipularArquivos(dados: any) {
-    if (images.length > 6) {
-      return 0;
-    }
-    const { photos } = dados;
-    var img = [];
-    img.push(...images);
-    photos.map((photo) => {
-      img.push(photo);
-    })
-
-    setImages(img);
-    setDadosForm({...dadosForm,"photos":img}) 
-
-  }
+  
 
 
 
@@ -73,7 +55,8 @@ const Cadastrar: React.FC = () => {
           setDadosForm({ ...dadosForm, "Obs": data.Obs })
           break;
         case "photos":
-          manipularArquivos(data.photos);
+          var photos =data.photos;
+          setDadosForm({ ...dadosForm,photos})
           break;
         case "VistoriaData":
           setDadosForm({ ...dadosForm, "VistoriaData": data.VistoriaData })
@@ -99,9 +82,9 @@ const Cadastrar: React.FC = () => {
       <Form className='formulario' initialData={dadosForm} onBlur={submitFunc} encType='multipart/form-data' id='Forms' ref={formRef} onSubmit={submitForm} >
 
         <Outlet context={[dadosForm,setDadosForm]}   />
-
+       
       </Form >
-      <button className='btn' ref={inputRef} onClick={submitFunc} name="enviar" >Salvar</button>
+     
       <NavBottom  key="barra-navegacao" buttonList={navButton} />
 
     </div>

@@ -1,20 +1,22 @@
 .header {
-    padding: 5px;
-    width: 100%;
-    background: linear-gradient(to right, #ffffff 0%, #0066ff 100%);
+   
+    background-color: #ffff;
     display: flex;
+    padding:0px 4px;
     justify-content: space-between;
     align-items: center;
-    border-bottom: #dfdfd1 0.1mm solid;
-    border-radius: 0px 0px 10px 10px;
-    box-shadow: 3px 4px #8d9aad;
-    grid-area: h;
+    box-shadow: 1px 1px 5px 0px #a19f9f;
+    z-index: 3;
+
+   
     
 
 }
-#menu-icon{
-    display: flex;
+
+#icon-checked{
+    display: none;
 }
+
 
 .icon img{
     
@@ -28,7 +30,7 @@
 }
 
 .icon img:hover {
-    background: #486da5 ;
+    cursor: pointer;
     transition: 0.4s;
 
 
@@ -65,8 +67,6 @@
 }
 
 @media(max-width:900px){
-#menu-icon:hover .barra-lateral{
-        display:flex;
-    }
+
     
 }

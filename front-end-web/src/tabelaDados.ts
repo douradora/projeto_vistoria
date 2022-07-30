@@ -1,5 +1,5 @@
 import { IOptions } from "./componetes/radioInput"
-import { IbuttonList } from "./general/SideBar"
+import { IbuttonList } from "./general/menu-header"
 
     //opçoes de  sinistros
 export const situacao: IOptions[] = [
