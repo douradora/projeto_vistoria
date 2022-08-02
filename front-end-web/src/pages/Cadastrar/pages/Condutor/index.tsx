@@ -10,6 +10,7 @@ const Condutor: React.FC = () => {
           <Scope path='Condutor'>
          <Input name='Nome_condutor' label='Nome Completo:'/>
          <Input name='cpf_condutor' label='Cpf:'/>
+         <Input name='email_condutor' type='email'   label='Email:'/>
         </Scope>
         </div>
 

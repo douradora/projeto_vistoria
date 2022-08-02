@@ -6,6 +6,7 @@
 
 }
 #conteiner-obs textarea{
+    padding-left: 5px;
     height: 200px;
     width: 500px;
     outline: none;

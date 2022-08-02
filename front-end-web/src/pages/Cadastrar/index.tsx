@@ -6,6 +6,7 @@ import { Outlet } from 'react-router-dom';
 import { navButton } from '../../tabelaDados';
 import NavBottom from './pages/NavBottom';
 import { FormHandles } from '@unform/core';
+import Photos from './pages/Photos';
 
 
 
@@ -21,23 +22,22 @@ const Cadastrar: React.FC = () => {
     console.log(dadosForm)
   },[dadosForm])
 
-  function submitFunc() {
+  function salvarDados() {
     formRef.current?.submitForm()
   }
-
-
-  
-
-
-
-
-
-
 
   /**
    * @submitForm recebe os dados do formulario e incluir no estado de dadosForm
    */
 
+  /**
+   *
+   *
+   * @param {*} data objeto adicionar ao array e nao sobreescrever
+   */
+  function salvarVariasPhotos(data){
+
+  }
 
   function submitForm(data: any) {
 
@@ -55,8 +55,14 @@ const Cadastrar: React.FC = () => {
           setDadosForm({ ...dadosForm, "Obs": data.Obs })
           break;
         case "photos":
-          var photos =data.photos;
-          setDadosForm({ ...dadosForm,photos})
+            const {photos} = dadosForm;
+            var save:any =[];
+            if(photos != undefined){
+                save = Array.from(photos);
+            }
+              save.push(data.photos[0])
+           console.log(save)
+           setDadosForm({ ...dadosForm, "photos":save})
           break;
         case "VistoriaData":
           setDadosForm({ ...dadosForm, "VistoriaData": data.VistoriaData })
@@ -79,7 +85,7 @@ const Cadastrar: React.FC = () => {
   return (
     <div className='cadastro-conteudo'>
 
-      <Form className='formulario' initialData={dadosForm} onBlur={submitFunc} encType='multipart/form-data' id='Forms' ref={formRef} onSubmit={submitForm} >
+      <Form className='formulario' initialData={dadosForm}  onChange={salvarDados} onBlur={salvarDados} encType='multipart/form-data' id='Forms' ref={formRef} onSubmit={submitForm} >
 
         <Outlet context={[dadosForm,setDadosForm]}   />
        

@@ -6,7 +6,10 @@
   margin: 15px;
     padding: 5px;
 }
+.conteiner-condutor input{
+  padding-left: 6px;
 
+}
 
 
 .conteiner-condutor input:focus 
