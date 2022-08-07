@@ -13,7 +13,7 @@ export interface Ivistoria{
     obs:string
     destino_id:string
     situacao:string
-    id_photos_fk:string
+    id_photos_url:string
     
        
 }
@@ -25,7 +25,7 @@ export interface Ivistoria{
  */
 export class createVistoriaService{
 
-        async execute({veiculo_placa,veiculo_combustivel,veiculo_quilometragem, id_user,condutor_cpf,condutor_nome,obs,destino_id,situacao,id_photos_fk}:Ivistoria,{dados_vistoria,tipo_veiculo}:ImodeloVistoria){
+        async execute({veiculo_placa,veiculo_combustivel,veiculo_quilometragem, id_user,condutor_cpf,condutor_nome,obs,destino_id,situacao,id_photos_url}:Ivistoria,{dados_vistoria,tipo_veiculo}:ImodeloVistoria){
            
             
 
@@ -43,7 +43,7 @@ export class createVistoriaService{
                     destino_id,
                     situacao,
                     tipo_veiculo,
-                    id_photos_fk
+                    id_photos_url
                     }
                 
             })

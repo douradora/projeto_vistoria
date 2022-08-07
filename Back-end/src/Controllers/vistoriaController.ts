@@ -72,9 +72,9 @@ export class vistoriaController {
                         
                 }
 
-                const id_photos_fk = await savePhotos.create(req.files,veiculo_placa);
+                const id_photos_url = await savePhotos.create(req.files,veiculo_placa);
               
-                if(!id_photos_fk){
+                if(!id_photos_url){
                         throw new Error("nao foi possivel salvar as photos,vistoria nao foi criada")
                 }
                 const saveVistoria = await vistoriaCreate.execute({
@@ -87,7 +87,7 @@ export class vistoriaController {
                         obs,
                         destino_id,
                         situacao,
-                        id_photos_fk
+                        id_photos_url
                 }, { dados_vistoria, tipo_veiculo });
 
                 
@@ -119,7 +119,7 @@ export class vistoriaController {
          const list =  new  listVistoriaService();
          const listando  = await list.listEvery();
         
-        return  res.status(200).send({listando});
+        return  res.status(200).send(listando);
 
 
 

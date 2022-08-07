@@ -71,7 +71,7 @@ model Photos {
   id_photos  String   @id @default(uuid())
   url_photos String
   created_at DateTime @default(dbgenerated("now()")) @db.DateTime()
-
+  vistoria    Vistoria[]
 
 
 }
@@ -88,10 +88,12 @@ model Vistoria {
   destino_id      String
   tipo_veiculo   String   @db.VarChar(10)
   dados_vistoria Json
-  obs            String
-  id_photos_fk   String?
+  obs            String 
+  id_photos_url  String?
   created_at     DateTime @default(dbgenerated("now()")) @db.DateTime
   Veiculo        Veiculo  @relation(fields: [veiculo_placa], references: [placa], onDelete: Cascade, onUpdate: Cascade)
+  Photos         Photos? @relation(fields: [id_photos_url],references: [id_photos],onDelete: Cascade,onUpdate: Cascade)
+
 
 
 
